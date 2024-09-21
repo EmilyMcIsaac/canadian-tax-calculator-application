@@ -8,6 +8,7 @@ com\example\calculator\dto\UserDTO.class
 com\example\calculator\services\TaxBracketService.class
 com\example\calculator\exception\GlobalExceptionHandler.class
 com\example\calculator\repositories\TaxHistoryRepository.class
+com\example\calculator\dto\TaxCalculationRequest.class
 com\example\calculator\controllers\WebController.class
 com\example\calculator\exception\ResourceNotFoundException.class
 com\example\calculator\services\UserService.class

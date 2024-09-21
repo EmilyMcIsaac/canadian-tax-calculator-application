@@ -23,13 +23,16 @@ public class TaxCalculationService {
         this.taxBracketRepository = taxBracketRepository;
     }
 
-    // Create a new tax calculation (with actual tax calculations)
+    // Create a new tax calculation
     public TaxCalculation createTaxCalculation(BigDecimal income, String province, User user) {
+
         // Fetch federal tax brackets
         List<TaxBracket> federalBrackets = taxBracketRepository.findByRegionAndYear("federal", 2024);
 
         // Fetch provincial tax brackets for the selected province
-        List<TaxBracket> provincialBrackets = taxBracketRepository.findByRegionAndYear(province, 2024);
+        List<TaxBracket> provincialBrackets = taxBracketRepository.findByRegionAndYear(province.toLowerCase(), 2024);
+
+        System.out.println("Fetched Provincial Brackets: " + provincialBrackets);
 
         // Calculate federal and provincial taxes
         BigDecimal federalTax = calculateTaxForBrackets(income, federalBrackets);
@@ -56,6 +59,9 @@ public class TaxCalculationService {
         BigDecimal totalTax = BigDecimal.ZERO;
 
         for (TaxBracket bracket : taxBrackets) {
+            System.out.println("Calculating tax for bracket: " + bracket);
+            System.out.println("Income: " + income + ", Min: " + bracket.getMaxIncome() + ", Max: " + bracket.getMinIncome() + ", Rate: " + bracket.getTaxRate());
+
             BigDecimal minIncome = bracket.getMinIncome();
             BigDecimal maxIncome = bracket.getMaxIncome().compareTo(new BigDecimal("999999999.99")) == 0
                     ? income : bracket.getMaxIncome();  // Cap at user's income or bracket's max

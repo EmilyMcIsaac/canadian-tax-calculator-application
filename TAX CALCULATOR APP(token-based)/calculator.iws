@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de0e940d-9b20-46e8-ba14-303efc4f4890" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/ProtectedPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/TaxCalculationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.iws" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxCalculationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxCalculationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/calculate-tax.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/calculate-tax.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/models/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/calculate-tax.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/calculate-tax.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
@@ -389,7 +397,7 @@
       <workItem from="1726704881870" duration="17000" />
       <workItem from="1726937020893" duration="3909000" />
       <workItem from="1726943445588" duration="136000" />
-      <workItem from="1726946901188" duration="6446000" />
+      <workItem from="1726946901188" duration="9468000" />
     </task>
     <servers />
   </component>

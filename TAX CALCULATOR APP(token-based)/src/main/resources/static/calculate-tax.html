@@ -104,11 +104,22 @@
         const provincialTaxElement = document.getElementById('provincialTax');
         const netIncomeElement = document.getElementById('netIncome');
 
+        const provinceMap = {
+            "newfoundland-and-labrador": "newfoundland and labrador",
+            "nova-scotia": "nova scotia",
+            "new-brunswick": "new brunswick",
+            "prince-edward-island": "prince edward island",
+            "british-columbia": "british columbia",
+            "northwest-territories": "northwest territories",
+            // Add all other provinces with spaces here...
+        };
+
         form.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent form from submitting normally
 
             const income = parseFloat(document.getElementById('income').value);
-            const province = document.getElementById('province').value;
+            const selectedProvince = document.getElementById('province').value;
+            const province = provinceMap[selectedProvince] || selectedProvince;
 
             // Validate the income and province
             if (income <= 0) {
@@ -142,14 +153,14 @@
                 const submitButton = form.querySelector('button[type="submit"]');
                 submitButton.disabled = true;
 
-                const response = await fetch('http://localhost:8080/api/tax-calculations/calculate', {
+                const response = await fetch('/api/tax-calculations/calculate', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}` // Include JWT token
                     },
                     body: JSON.stringify({
-                        income: income,
+                        income: income.toString(),
                         province: province,
                         userId: userId // Include the correct userId from the JWT token
                     })

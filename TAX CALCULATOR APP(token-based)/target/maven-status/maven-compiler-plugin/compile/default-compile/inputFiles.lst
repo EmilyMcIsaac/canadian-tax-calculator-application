@@ -6,6 +6,7 @@ C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com
 C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\controllers\UserController.java
 C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\controllers\WebController.java
 C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\dto\LoginRequest.java
+C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\dto\TaxCalculationRequest.java
 C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\dto\UserDTO.java
 C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\exception\GlobalExceptionHandler.java
 C:\Users\Emily\PROJECTS\taxapp\TAX CALCULATOR APP(token-based)\src\main\java\com\example\calculator\exception\ResourceNotFoundException.java

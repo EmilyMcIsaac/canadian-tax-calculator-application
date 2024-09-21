@@ -1,11 +1,9 @@
 package com.example.calculator.controllers;
 
+import com.example.calculator.dto.TaxCalculationRequest;
 import com.example.calculator.exception.ResourceNotFoundException;
 import com.example.calculator.models.*;
 import com.example.calculator.services.*;
-
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,20 +16,22 @@ import java.util.List;
 public class TaxCalculationController {
 
     private final TaxCalculationService taxCalculationService;
-    private final UserService userService;  // Inject the UserService here
+    private final UserService userService;
 
     @Autowired
     public TaxCalculationController(TaxCalculationService taxCalculationService, UserService userService) {
         this.taxCalculationService = taxCalculationService;
-        this.userService = userService;  // Initialize it via the constructor
+        this.userService = userService;
     }
 
     @PostMapping("/calculate")
-    public ResponseEntity<TaxCalculation> calculateTax(
-            @RequestParam("income") @Positive(message = "Income must be positive") BigDecimal income,
-            @RequestParam("province") @NotEmpty String province,
-            @RequestParam("userId") Long userId) {
-        // Fetch the user from the UserService or UserRepository (not shown here)
+    public ResponseEntity<TaxCalculation> calculateTax(@RequestBody TaxCalculationRequest request) {
+        BigDecimal income = request.getIncome();
+        String province = request.getProvince().toLowerCase();
+        Long userId = request.getUserId();
+
+
+        // Fetch the user from the UserService
         User user = userService.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         // Calculate the tax
