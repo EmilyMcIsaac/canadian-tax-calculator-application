@@ -107,9 +107,9 @@
                     console.log('Response data:', data);  // Log the response data
                     if (data.token) {  // Ensure both token and userId are present
                         localStorage.setItem('jwtToken', data.token);  // Store JWT token
-
+                        console.log(data.token);
                         alert('Login successful!');
-                        window.location.href = '/index.html';  // Redirect to the protected page
+                        window.location.href = '/account.html';  // Redirect to the protected page
                     } else {
                         alert('Error during login: ' + (data.message || 'Unknown error'));
                     }

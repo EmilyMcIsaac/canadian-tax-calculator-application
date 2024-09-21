@@ -8,45 +8,88 @@
 </head>
 <body>
 
-<!-- Placeholder for dynamic content -->
-<div id="content"></div>
+<!-- Static HTML Content in index.html -->
+<div id="content">
+  <h2>My Account</h2>
+  <p>Username: <span id="user-username">Loading...</span></p>
+  <p>Email: <span id="user-email">Loading...</span></p>
+  <button id="calculate-tax-btn">Calculate Taxes</button>
+  <button id="view-tax-history-btn">View Tax History</button>
+  <button id="edit-account-info-btn">Edit Account Info</button>
+</div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- JavaScript to fetch protected content -->
 <script>
-  // Check if the JWT token exists in localStorage
   const token = localStorage.getItem('jwtToken');
-
   if (token) {
-    // Fetch the protected content from account.html
+    // Fetch the protected content and include the JWT token
     fetch('/account.html', {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer ' + token  // Include JWT token in headers
+        'Authorization': 'Bearer ' + token
       }
     })
             .then(response => {
               if (response.ok) {
-                return response.text();  // Return the HTML content
+                return response.text(); // Return HTML content
               } else {
-                throw new Error('Unauthorized or missing token');
+                throw new Error('Access denied: Invalid or missing token');
               }
             })
             .then(htmlContent => {
-              // Inject the HTML content into the page
-              document.getElementById('content').innerHTML = htmlContent;
+              document.body.innerHTML = htmlContent;
             })
             .catch(error => {
-              console.error('Error fetching protected content:', error);
-              alert('You must be logged in to access this page.');
-              window.location.href = '/login.html';  // Redirect to login if not authenticated
+              console.error('Error fetching account page:', error);
+              window.location.href = '/login.html'; // Redirect to login if unauthorized
             });
   } else {
-    // Redirect to login if no token is found
-    window.location.href = '/login.html';
+    window.location.href = '/login.html'; // Redirect to login if no token
   }
+
+  // // Check if JWT token exists in localStorage
+  // const token = localStorage.getItem('jwtToken');
+  //
+  // console.log(localStorage.getItem('jwtToken'));
+  //
+  // if (!token) {
+  //   // Redirect to login page if no token is found
+  //   window.location.href = '/login.html';
+  // }
+  // // debugger;
+  // // Fetch user information
+  // fetch('/api/users/current', {
+  //   method: 'GET',
+  //   headers: {
+  //     'Authorization': 'Bearer ' + token,
+  //     'Content-Type': 'application/json'
+  //   }
+  // })
+  //         .then(response => {
+  //           if (response.ok) {
+  //             return response.json();
+  //           } else if (response.status === 401 || response.status === 403) {
+  //             // Token might be invalid or expired
+  //             localStorage.removeItem('jwtToken');
+  //             alert('Session expired. Please log in again.');
+  //             window.location.href = '/login.html';
+  //           } else {
+  //             throw new Error('Failed to fetch user information');
+  //           }
+  //         })
+  //         .then(user => {
+  //           // Populate user information
+  //           document.getElementById('user-username').innerText = user.username;
+  //           document.getElementById('user-email').innerText = user.email;
+  //         })
+  //         .catch(error => {
+  //           console.error('Error fetching user info:', error);
+  //           alert('Failed to load user information.');
+  //         });
+
 </script>
 
 </body>

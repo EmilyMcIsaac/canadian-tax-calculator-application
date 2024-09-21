@@ -96,157 +96,160 @@
 
 
 <!-- JavaScript to fetch user info -->
-<script>
-    // Check if JWT token exists in localStorage
-    if (!localStorage.getItem('jwtToken')) {
-        window.location.href = '/login.html';
-    }
-
-    // Fetch current user's info and display it
-    fetch('/api/users/current', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')  // Include the JWT token in Authorization header
-        }
-
-    })
-
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Failed to fetch user information');
-            }
-        })
-        .then(user => {
-            document.getElementById('user-username').innerText = user.username;
-            document.getElementById('user-email').innerText = user.email;
-
-            // Pre-fill modal fields
-            document.getElementById('update-username').value = user.username;
-            document.getElementById('update-email').value = user.email;
-        })
-        .catch(error => {
-            console.error('Error fetching user info:', error);
-            alert('Failed to load user information.');
-        });
-
-</script>
-
-<!-- JavaScript for Confirming Passwords and Updating Account -->
-<script>
-    // Example: Update the user account (assuming an authenticated user)
-    fetch('/api/users/current', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')  // Include the JWT token in Authorization header
-        },
-        body: JSON.stringify(updatedData),
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Failed to update account information');
-            }
-        })
-        .then(data => {
-            alert('Account updated successfully!');
-            window.location.reload();  // Reload the page to reflect changes
-        })
-        .catch(error => {
-            console.error('Error updating account:', error);
-            alert('An error occurred while updating your account.');
-        });
-
-</script>
-
-<!--&lt;!&ndash; JavaScript to fetch user info &ndash;&gt;-->
 <!--<script>-->
-<!--    &lt;!&ndash; JavaScript for Account Page &ndash;&gt;-->
-<!--        document.addEventListener('DOMContentLoaded', function () {-->
-<!--        const token = localStorage.getItem('jwtToken');-->
-
-<!--        // Check if the user is logged in (token must exist)-->
-<!--        if (!token) {-->
-<!--        alert('You must be logged in to view this page.');-->
+<!--    debugger;-->
+<!--    // Check if JWT token exists in localStorage-->
+<!--    if (!localStorage.getItem('jwtToken')) {-->
 <!--        window.location.href = '/login.html';-->
-<!--        return;-->
 <!--    }-->
+<!--    console.log(localStorage.getItem('jwtToken'));-->
 
-<!--        // Fetch current user's info and display it-->
-<!--        fetch('/api/users/current', {-->
+<!--    // Fetch current user's info and display it-->
+<!--    fetch('/api/users/current', {-->
 <!--        method: 'GET',-->
 <!--        headers: {-->
-<!--        'Content-Type': 'application/json',-->
-<!--        'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header-->
-<!--    }-->
+<!--            'Content-Type': 'application/json',-->
+<!--            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')  // Include the JWT token in Authorization header-->
+<!--        }-->
+
 <!--    })-->
+
 <!--        .then(response => {-->
-<!--        if (response.ok) {-->
-<!--        return response.json();  // Expect JSON response containing user data-->
-<!--    } else {-->
-<!--        throw new Error('Failed to fetch user information');-->
-<!--    }-->
-<!--    })-->
+<!--            if (response.ok) {-->
+<!--                return response.json();-->
+<!--            } else {-->
+<!--                throw new Error('Failed to fetch user information');-->
+<!--            }-->
+<!--        })-->
 <!--        .then(user => {-->
-<!--        // Display the user's information in the DOM-->
-<!--        document.getElementById('user-username').innerText = user.username;-->
-<!--        document.getElementById('user-email').innerText = user.email;-->
+<!--            document.getElementById('user-username').innerText = user.username;-->
+<!--            document.getElementById('user-email').innerText = user.email;-->
 
-<!--        // Pre-fill modal fields with user data for editing-->
-<!--        document.getElementById('update-username').value = user.username;-->
-<!--        document.getElementById('update-email').value = user.email;-->
-<!--    })-->
+<!--            // Pre-fill modal fields-->
+<!--            document.getElementById('update-username').value = user.username;-->
+<!--            document.getElementById('update-email').value = user.email;-->
+<!--        })-->
 <!--        .catch(error => {-->
-<!--        console.error('Error fetching user info:', error);-->
-<!--        alert('Failed to load user information.');-->
-<!--    });-->
-
-<!--        // Handle account info update submission-->
-<!--        document.getElementById('editAccountForm').addEventListener('submit', function (event) {-->
-<!--        event.preventDefault();  // Prevent the form's default submission behavior-->
-
-<!--        // Collect updated user data from the form-->
-<!--        const updatedUsername = document.getElementById('update-username').value;-->
-<!--        const updatedEmail = document.getElementById('update-email').value;-->
-
-<!--        const updatedData = {-->
-<!--        username: updatedUsername,-->
-<!--        email: updatedEmail-->
-<!--    };-->
-
-<!--        // Send the updated data to the server via PUT request-->
-<!--        fetch('/api/users/current', {-->
-<!--        method: 'PUT',-->
-<!--        headers: {-->
-<!--        'Content-Type': 'application/json',-->
-<!--        'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header-->
-<!--    },-->
-<!--        body: JSON.stringify(updatedData)  // Send the updated user data in the request body-->
-<!--    })-->
-<!--        .then(response => {-->
-<!--        if (response.ok) {-->
-<!--        return response.json();-->
-<!--    } else {-->
-<!--        throw new Error('Failed to update account information');-->
-<!--    }-->
-<!--    })-->
-<!--        .then(data => {-->
-<!--        alert('Account updated successfully!');-->
-<!--        window.location.reload();  // Reload the page to reflect the updated info-->
-<!--    })-->
-<!--        .catch(error => {-->
-<!--        console.error('Error updating account:', error);-->
-<!--        alert('An error occurred while updating your account.');-->
-<!--    });-->
-<!--    });-->
-
-<!--    });-->
+<!--            console.error('Error fetching user info:', error);-->
+<!--            alert('Failed to load user information.');-->
+<!--        });-->
 
 <!--</script>-->
+
+<!--&lt;!&ndash; JavaScript for Confirming Passwords and Updating Account &ndash;&gt;-->
+<!--<script>-->
+<!--    // Example: Update the user account (assuming an authenticated user)-->
+<!--    fetch('/api/users/current', {-->
+<!--        method: 'PUT',-->
+<!--        headers: {-->
+<!--            'Content-Type': 'application/json',-->
+<!--            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')  // Include the JWT token in Authorization header-->
+<!--        },-->
+<!--        body: JSON.stringify(updatedData),-->
+<!--    })-->
+<!--        .then(response => {-->
+<!--            if (response.ok) {-->
+<!--                return response.json();-->
+<!--            } else {-->
+<!--                throw new Error('Failed to update account information');-->
+<!--            }-->
+<!--        })-->
+<!--        .then(data => {-->
+<!--            alert('Account updated successfully!');-->
+<!--            window.location.reload();  // Reload the page to reflect changes-->
+<!--        })-->
+<!--        .catch(error => {-->
+<!--            console.error('Error updating account:', error);-->
+<!--            alert('An error occurred while updating your account.');-->
+<!--        });-->
+
+<!--</script>-->
+
+<!-- JavaScript to fetch user info -->
+<script>
+    <!-- JavaScript for Account Page -->
+        document.addEventListener('DOMContentLoaded', function () {
+        const token = localStorage.getItem('jwtToken');
+        console.log(token)
+
+        // Check if the user is logged in (token must exist)
+        if (!token) {
+        alert('You must be logged in to view this page.');
+        window.location.href = '/login.html';
+        return;
+    }
+
+        // Fetch current user's info and display it
+        fetch('/api/users/current', {
+        method: 'GET',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header
+    }
+    })
+        .then(response => {
+        if (response.ok) {
+        return response.json();  // Expect JSON response containing user data
+    } else {
+        throw new Error('Failed to fetch user information');
+    }
+    })
+        .then(user => {
+        // Display the user's information in the DOM
+        document.getElementById('user-username').innerText = user.username;
+        document.getElementById('user-email').innerText = user.email;
+
+        // Pre-fill modal fields with user data for editing
+        document.getElementById('update-username').value = user.username;
+        document.getElementById('update-email').value = user.email;
+    })
+        .catch(error => {
+        console.error('Error fetching user info:', error);
+        alert('Failed to load user information.');
+    });
+
+        // Handle account info update submission
+        document.getElementById('editAccountForm').addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent the form's default submission behavior
+
+        // Collect updated user data from the form
+        const updatedUsername = document.getElementById('update-username').value;
+        const updatedEmail = document.getElementById('update-email').value;
+
+        const updatedData = {
+        username: updatedUsername,
+        email: updatedEmail
+    };
+
+        // Send the updated data to the server via PUT request
+        fetch('/api/users/current', {
+        method: 'PUT',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header
+    },
+        body: JSON.stringify(updatedData)  // Send the updated user data in the request body
+    })
+        .then(response => {
+        if (response.ok) {
+        return response.json();
+    } else {
+        throw new Error('Failed to update account information');
+    }
+    })
+        .then(data => {
+        alert('Account updated successfully!');
+        window.location.reload();  // Reload the page to reflect the updated info
+    })
+        .catch(error => {
+        console.error('Error updating account:', error);
+        alert('An error occurred while updating your account.');
+    });
+    });
+
+    });
+
+</script>
 
 </body>
 </html>
