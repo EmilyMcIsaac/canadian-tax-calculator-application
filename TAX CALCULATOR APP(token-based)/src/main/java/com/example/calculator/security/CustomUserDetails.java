@@ -17,4 +17,7 @@ public class CustomUserDetails extends User {
     public Long getUserId() {
         return userId;
     }
+
+    public void setUserId(Long userId) {
+    }
 }

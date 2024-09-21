@@ -85,29 +85,45 @@
             };
             console.log(JSON.stringify(loginData));
 
-            // debugger;
-            // Send POST request to the backend for login
+// Helper function to decode the JWT token
+            function parseJwt(token) {
+                let base64Url = token.split('.')[1];  // Get the payload part of the token
+                let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                let jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+
+                return JSON.parse(jsonPayload);  // Return the parsed JSON payload
+            }
+
+// After receiving the token
             fetch('/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(loginData)  // Convert the login data to JSON
+                body: JSON.stringify(loginData)
             })
                 .then(response => {
-                    // Check if response is OK and is JSON
                     if (!response.ok) {
-                        return response.text().then(text => {
-                            throw new Error(text || 'Login failed');
+                        return response.json().then(data => {  // Ensure response is parsed as JSON
+                            throw new Error(data.error || 'Login failed');
                         });
                     }
-                    return response.json();  // Expect a JSON response containing the JWT token and userId
+                    return response.json();  // Parse the JSON response if successful
                 })
                 .then(data => {
-                    console.log('Response data:', data);  // Log the response data
-                    if (data.token) {  // Ensure both token and userId are present
+                    console.log('Token:', data.token);  // Log token
+
+                    // Decode the token to get userId
+                    const decodedToken = parseJwt(data.token);
+                    console.log('Decoded Token:', decodedToken);
+                    const userId = decodedToken.userId;  // Assuming userId is stored in the token
+                    console.log('UserID from Token:', userId);
+
+                    if (data.token) {
                         localStorage.setItem('jwtToken', data.token);  // Store JWT token
-                        console.log(data.token);
+                        localStorage.setItem('userId', userId);  // Store extracted User ID
                         alert('Login successful!');
                         window.location.href = '/account.html';  // Redirect to the protected page
                     } else {
@@ -120,24 +136,6 @@
                 });
         });
     });
-
-
-
-    // // Login form submission
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     document.getElementById('login-form').addEventListener('submit', function (event) {
-    //         event.preventDefault();  // Prevent default form submission
-    //
-    //         const usernameEmail = document.getElementById('username-email').value;
-    //         const password = document.getElementById('password').value;
-    //
-    //         const loginData = {
-    //             usernameOrEmail: usernameEmail,
-    //             password: password
-    //         };
-    //         console.log(JSON.stringify(loginData));
-    //
-    //         // Send POST request to the backend for login
     //         fetch('/api/auth/login', {
     //             method: 'POST',
     //             headers: {
@@ -145,33 +143,141 @@
     //             },
     //             body: JSON.stringify(loginData)  // Convert the login data to JSON
     //         })
-    //
     //             .then(response => {
-    //                 // Check if response is OK and is JSON
     //                 if (!response.ok) {
-    //                     return response.text().then(text => {
-    //                         throw new Error(text || 'Login failed');
+    //                     // If the response is not OK, handle the error
+    //                     return response.json().then(data => {  // Ensure response is parsed as JSON
+    //                         throw new Error(data.error || 'Login failed');
     //                     });
     //                 }
-    //                 return response.json();  // Expect a JSON response containing the JWT token
+    //                 return response.json();  // Parse the JSON response if successful
     //             })
     //             .then(data => {
     //                 console.log('Response data:', data);  // Log the response data
-    //                 if (data.token) {
-    //                     localStorage.setItem('jwtToken', data.token);
+    //                 console.log('Token:', data.token);  // Log token
+    //                 console.log('UserID:', data.userId);  // Log userId
+    //
+    //                 if (data.token && data.userId) {  // Ensure both token and userId are present
+    //                     localStorage.setItem('jwtToken', data.token);  // Store JWT token
+    //                     localStorage.setItem('userId', data.userId);  // Store User ID
     //                     alert('Login successful!');
     //                     window.location.href = '/account.html';  // Redirect to the protected page
     //                 } else {
     //                     alert('Error during login: ' + (data.message || 'Unknown error'));
     //                 }
     //             })
-    //
     //             .catch(error => {
     //                 console.error('Error during login:', error.message);
     //                 alert('An error occurred during login: ' + error.message);
     //             });
+    //
+    //         // debugger;
+    //         // Send POST request to the backend for login
+    //         // fetch('/api/auth/login', {
+    //         //     method: 'POST',
+    //         //     headers: {
+    //         //         'Content-Type': 'application/json'
+    //         //     },
+    //         //     body: JSON.stringify(loginData)  // Convert the login data to JSON
+    //         // })
+    //         //     .then(response => response.json())  // Ensure the response is parsed as JSON
+    //         //     .then(response => {
+    //         //         // Check if response is OK and is JSON
+    //         //         if (!response.ok) {
+    //         //             return response.text().then(text => {
+    //         //                 throw new Error(text || 'Login failed');
+    //         //             });
+    //         //         }
+    //         //         return response.json();  // Expect a JSON response containing the JWT token and userId
+    //         //     })
+    //         //     .then(data => {
+    //         //         console.log('Response data:', data);  // Log the response data
+    //         //         console.log('Token:', data.token);  // Log token
+    //         //         console.log('UserID:', data.userId);  // Log userId - this is currently showing undefined
+    //         //
+    //         //         if (data.token && data.userId) {  // Ensure both token and userId are present
+    //         //             localStorage.setItem('jwtToken', data.token);  // Store JWT token
+    //         //             localStorage.setItem('userId', data.userId);  // Store User ID
+    //         //             alert('Login successful!');
+    //         //             window.location.href = '/account.html';  // Redirect to the protected page
+    //         //         } else {
+    //         //             alert('Error during login: ' + (data.message || 'Unknown error'));
+    //         //         }
+    //         //     })
+    //         //     //
+    //         //     //     .then(data => {
+    //         //     //     console.log('Response data:', data);  // Log the response data
+    //         //     //     console.log(JSON.stringify(data, null, 2)); // Pretty print the response object
+    //         //     //     console.log('Token:', data.token);  // Log token
+    //         //     //     console.log('UserID:', data.userId);  // Log userId
+    //         //     //     console.log(data.token)
+    //         //     //     if (data.token) {  // Ensure both token and userId are present
+    //         //     //         localStorage.setItem('jwtToken', data.token);  // Store JWT token
+    //         //     //         console.log(data.token);
+    //         //     //         alert('Login successful!');
+    //         //     //         window.location.href = '/account.html';  // Redirect to the protected page
+    //         //     //     } else {
+    //         //     //         alert('Error during login: ' + (data.message || 'Unknown error'));
+    //         //     //     }
+    //         //     // })
+    //         //     .catch(error => {
+    //         //         console.error('Error during login:', error.message);
+    //         //         alert('An error occurred during login: ' + error.message);
+    //         //     });
     //     });
     // });
+    //
+    //
+    //
+    // // // Login form submission
+    // // document.addEventListener('DOMContentLoaded', function() {
+    // //     document.getElementById('login-form').addEventListener('submit', function (event) {
+    // //         event.preventDefault();  // Prevent default form submission
+    // //
+    // //         const usernameEmail = document.getElementById('username-email').value;
+    // //         const password = document.getElementById('password').value;
+    // //
+    // //         const loginData = {
+    // //             usernameOrEmail: usernameEmail,
+    // //             password: password
+    // //         };
+    // //         console.log(JSON.stringify(loginData));
+    // //
+    // //         // Send POST request to the backend for login
+    // //         fetch('/api/auth/login', {
+    // //             method: 'POST',
+    // //             headers: {
+    // //                 'Content-Type': 'application/json'
+    // //             },
+    // //             body: JSON.stringify(loginData)  // Convert the login data to JSON
+    // //         })
+    // //
+    // //             .then(response => {
+    // //                 // Check if response is OK and is JSON
+    // //                 if (!response.ok) {
+    // //                     return response.text().then(text => {
+    // //                         throw new Error(text || 'Login failed');
+    // //                     });
+    // //                 }
+    // //                 return response.json();  // Expect a JSON response containing the JWT token
+    // //             })
+    // //             .then(data => {
+    // //                 console.log('Response data:', data);  // Log the response data
+    // //                 if (data.token) {
+    // //                     localStorage.setItem('jwtToken', data.token);
+    // //                     alert('Login successful!');
+    // //                     window.location.href = '/account.html';  // Redirect to the protected page
+    // //                 } else {
+    // //                     alert('Error during login: ' + (data.message || 'Unknown error'));
+    // //                 }
+    // //             })
+    // //
+    // //             .catch(error => {
+    // //                 console.error('Error during login:', error.message);
+    // //                 alert('An error occurred during login: ' + error.message);
+    // //             });
+    // //     });
+    // // });
 
 </script>
 

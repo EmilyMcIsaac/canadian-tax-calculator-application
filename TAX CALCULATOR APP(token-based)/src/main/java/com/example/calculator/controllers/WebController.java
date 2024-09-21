@@ -1,6 +1,5 @@
 package com.example.calculator.controllers;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,14 +21,6 @@ public class WebController {
     @GetMapping("/register")
     public String register() {
         return "redirect:/register.html";  // Redirect to static file
-    }
-
-    @GetMapping("/account")
-    public String account(HttpSession session) {
-        if (session.getAttribute("user") == null) {
-            return "redirect:/login.html";  // Redirect to login if no user in session
-        }
-        return "redirect:/account.html";   // Proceed to account if authenticated
     }
 
 }

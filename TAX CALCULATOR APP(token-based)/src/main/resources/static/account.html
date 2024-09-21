@@ -170,7 +170,7 @@
     <!-- JavaScript for Account Page -->
         document.addEventListener('DOMContentLoaded', function () {
         const token = localStorage.getItem('jwtToken');
-        console.log(token)
+        console.log(token);
 
         // Check if the user is logged in (token must exist)
         if (!token) {
@@ -186,6 +186,7 @@
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header
     }
+
     })
         .then(response => {
         if (response.ok) {

@@ -55,7 +55,7 @@ public class AuthController {
             logger.info("Authentication successful for user: " + user.getUsername());
 
             // Return token and userId in the response
-            return ResponseEntity.ok().body(Map.of("token", token, "userId", user.getId(), "message", "Login successful"));
+            return ResponseEntity.ok().body(Map.of("token", token, "message", "Login successful"));
         } catch (AuthenticationException e) {
             // Return error in JSON format
             logger.error("Authentication failed for user: " + loginRequest.getUsernameOrEmail());

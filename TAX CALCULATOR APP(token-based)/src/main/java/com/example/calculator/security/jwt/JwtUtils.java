@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JwtUtils {
@@ -24,10 +26,13 @@ public class JwtUtils {
 
     // Generate a token with both username and userId as claims
     public String generateToken(String username, Long userId) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", userId);  // Add userId to claims
+
         return Jwts.builder()
+                .setClaims(claims)
                 .setSubject(username)  // Store the username in the "sub" claim (standard)
-                .claim("userId", userId)  // Store the userId in a custom claim
-                .setIssuedAt(new Date())  // Set the issue time
+                .setIssuedAt(new Date(System.currentTimeMillis()))  // Set the issue time
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs)) // Set expiration
                 .signWith(secretKey, SignatureAlgorithm.HS512)  // Sign with the secret key
                 .compact();
