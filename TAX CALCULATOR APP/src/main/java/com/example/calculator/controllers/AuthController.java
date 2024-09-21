@@ -45,11 +45,11 @@ public class AuthController {
                     )
             );
 
-            // Get the authenticated user details (assuming it's part of your user service)
+            // Get the authenticated user details
             User user = userService.findByUsernameOrEmail(loginRequest.getUsernameOrEmail());
 
             // Generate JWT token with both username and userId
-            String token = jwtUtils.generateToken(user.getUsername());
+            String token = jwtUtils.generateToken(user.getUsername(), user.getId());  // Pass userId along with username
 
             // Log the successful login
             logger.info("Authentication successful for user: " + user.getUsername());

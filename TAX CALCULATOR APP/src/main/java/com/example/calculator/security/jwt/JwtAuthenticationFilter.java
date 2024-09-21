@@ -61,7 +61,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + userDetails.getUsername()));
 
         // Generate JWT token with both username and userId
-        String token = jwtUtils.generateToken(userDetails.getUsername());
+        String token = jwtUtils.generateToken(userDetails.getUsername(), user.getId());  // Pass both username and userId
 
         // Set token in the response header
         response.addHeader("Authorization", "Bearer " + token);
@@ -70,6 +70,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write("{\"token\": \"" + token + "\"}");
-
     }
+
 }

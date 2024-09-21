@@ -61,7 +61,7 @@ public class UserController {
             User newUser = userService.registerUser(userDTO);
 
             // Generate JWT token for the newly registered user including userId in the claims
-            String token = jwtUtils.generateToken(newUser.getUsername());
+            String token = jwtUtils.generateToken(newUser.getUsername(), newUser.getId());  // Pass userId
 
             // Return JWT token, userId, and success message
             return ResponseEntity.ok(Map.of("message", "Registration successful", "token", token, "userId", newUser.getId()));
@@ -71,6 +71,7 @@ public class UserController {
                     .body(Map.of("error", "Registration failed", "details", e.getMessage()));
         }
     }
+
         // Get user details by username
     @GetMapping("/{username}")
     public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
