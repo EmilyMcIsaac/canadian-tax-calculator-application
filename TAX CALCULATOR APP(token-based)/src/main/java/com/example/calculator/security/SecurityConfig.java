@@ -40,7 +40,7 @@ public class SecurityConfig {
                         .requestMatchers("/", "/homepage.html", "/login.html", "/register.html", "/index.html").permitAll()
                         .requestMatchers("/api/auth/**", "/api/users/register", "/api/auth/login").permitAll()
                         .requestMatchers("/api/tax-calculations/calculate").hasRole("USER")
-                        .requestMatchers("/account.html", "/calculate-tax.html", "/tax-history.html").authenticated()
+                        .requestMatchers("/account.html", "/calculate-tax.html", "/tax-history.html", "/account", "calculate-tax", "tax-history").permitAll()
                         .anyRequest().authenticated())
                 // Use addFilterBefore to insert JwtAuthenticationFilter before UsernamePasswordAuthenticationFilter
                 .addFilterBefore(new JwtAuthenticationFilter(authenticationManager, jwtUtils, userService), UsernamePasswordAuthenticationFilter.class)

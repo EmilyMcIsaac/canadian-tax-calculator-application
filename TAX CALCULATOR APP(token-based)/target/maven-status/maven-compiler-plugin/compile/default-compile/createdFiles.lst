@@ -13,6 +13,7 @@ com\example\calculator\exception\ResourceNotFoundException.class
 com\example\calculator\services\UserService.class
 com\example\calculator\security\AuthenticationConfig.class
 com\example\calculator\repositories\UserRepository.class
+com\example\calculator\controllers\ProtectedPageController.class
 com\example\calculator\repositories\TaxBracketRepository.class
 com\example\calculator\controllers\AuthController.class
 com\example\calculator\dto\LoginRequest.class
