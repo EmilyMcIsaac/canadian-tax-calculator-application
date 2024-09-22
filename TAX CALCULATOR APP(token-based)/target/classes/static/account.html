@@ -77,6 +77,22 @@
                         <label for="update-email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="update-email" required>
                     </div>
+
+                    <!-- Button to show password change fields -->
+                    <button type="button" class="btn btn-secondary w-100 mb-3" id="changePasswordBtn">Change Password</button>
+
+                    <!-- Password fields, initially hidden -->
+                    <div id="passwordFields" style="display: none;">
+                        <div class="mb-3">
+                            <label for="old-password" class="form-label">Old Password</label>
+                            <input type="password" class="form-control" id="old-password" placeholder="Enter your old password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new-password" placeholder="Enter your new password">
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary w-100">Save Changes</button>
                 </form>
             </div>
@@ -87,83 +103,12 @@
 <!-- Footer -->
 <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-        <p>&copy; 2024 Canadian Tax Calculator. All Rights Reserved.</p>
+        <p>&copy; Canadian Tax Calculator. All Rights Reserved.</p>
     </div>
 </footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<!-- JavaScript to fetch user info -->
-<!--<script>-->
-<!--    debugger;-->
-<!--    // Check if JWT token exists in localStorage-->
-<!--    if (!localStorage.getItem('jwtToken')) {-->
-<!--        window.location.href = '/login.html';-->
-<!--    }-->
-<!--    console.log(localStorage.getItem('jwtToken'));-->
-
-<!--    // Fetch current user's info and display it-->
-<!--    fetch('/api/users/current', {-->
-<!--        method: 'GET',-->
-<!--        headers: {-->
-<!--            'Content-Type': 'application/json',-->
-<!--            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')  // Include the JWT token in Authorization header-->
-<!--        }-->
-
-<!--    })-->
-
-<!--        .then(response => {-->
-<!--            if (response.ok) {-->
-<!--                return response.json();-->
-<!--            } else {-->
-<!--                throw new Error('Failed to fetch user information');-->
-<!--            }-->
-<!--        })-->
-<!--        .then(user => {-->
-<!--            document.getElementById('user-username').innerText = user.username;-->
-<!--            document.getElementById('user-email').innerText = user.email;-->
-
-<!--            // Pre-fill modal fields-->
-<!--            document.getElementById('update-username').value = user.username;-->
-<!--            document.getElementById('update-email').value = user.email;-->
-<!--        })-->
-<!--        .catch(error => {-->
-<!--            console.error('Error fetching user info:', error);-->
-<!--            alert('Failed to load user information.');-->
-<!--        });-->
-
-<!--</script>-->
-
-<!--&lt;!&ndash; JavaScript for Confirming Passwords and Updating Account &ndash;&gt;-->
-<!--<script>-->
-<!--    // Example: Update the user account (assuming an authenticated user)-->
-<!--    fetch('/api/users/current', {-->
-<!--        method: 'PUT',-->
-<!--        headers: {-->
-<!--            'Content-Type': 'application/json',-->
-<!--            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')  // Include the JWT token in Authorization header-->
-<!--        },-->
-<!--        body: JSON.stringify(updatedData),-->
-<!--    })-->
-<!--        .then(response => {-->
-<!--            if (response.ok) {-->
-<!--                return response.json();-->
-<!--            } else {-->
-<!--                throw new Error('Failed to update account information');-->
-<!--            }-->
-<!--        })-->
-<!--        .then(data => {-->
-<!--            alert('Account updated successfully!');-->
-<!--            window.location.reload();  // Reload the page to reflect changes-->
-<!--        })-->
-<!--        .catch(error => {-->
-<!--            console.error('Error updating account:', error);-->
-<!--            alert('An error occurred while updating your account.');-->
-<!--        });-->
-
-<!--</script>-->
 
 <!-- JavaScript to fetch user info -->
 <script>
@@ -209,46 +154,128 @@
         alert('Failed to load user information.');
     });
 
-        // Handle account info update submission
-        document.getElementById('editAccountForm').addEventListener('submit', function (event) {
-        event.preventDefault();  // Prevent the form's default submission behavior
+            function parseJwt(token) {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
 
-        // Collect updated user data from the form
-        const updatedUsername = document.getElementById('update-username').value;
-        const updatedEmail = document.getElementById('update-email').value;
+                return JSON.parse(jsonPayload);
+            }
+// Handle "Change Password" button click
+            document.getElementById('changePasswordBtn').addEventListener('click', function () {
+                const passwordFields = document.getElementById('passwordFields');
+                // Toggle the visibility of the password fields
+                if (passwordFields.style.display === 'none') {
+                    passwordFields.style.display = 'block';
+                } else {
+                    passwordFields.style.display = 'none';
+                }
+            });
 
-        const updatedData = {
-        username: updatedUsername,
-        email: updatedEmail
-    };
+            // Handle account info update submission
+            document.getElementById('editAccountForm').addEventListener('submit', function (event) {
+                event.preventDefault();  // Prevent the form's default submission behavior
 
-        // Send the updated data to the server via PUT request
-        fetch('/api/users/current', {
-        method: 'PUT',
-        headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header
-    },
-        body: JSON.stringify(updatedData)  // Send the updated user data in the request body
-    })
-        .then(response => {
-        if (response.ok) {
-        return response.json();
-    } else {
-        throw new Error('Failed to update account information');
-    }
-    })
-        .then(data => {
-        alert('Account updated successfully!');
-        window.location.reload();  // Reload the page to reflect the updated info
-    })
-        .catch(error => {
-        console.error('Error updating account:', error);
-        alert('An error occurred while updating your account.');
-    });
-    });
+                // Collect updated user data from the form
+                const updatedUsername = document.getElementById('update-username').value;
+                const updatedEmail = document.getElementById('update-email').value;
+                const oldPassword = document.getElementById('old-password').value;
+                const newPassword = document.getElementById('new-password').value;
 
-    });
+                // Prepare the payload
+                const updatedData = {
+                    username: updatedUsername,
+                    email: updatedEmail
+                };
+
+                // If the password fields are visible and filled out, include them in the update request
+                if (oldPassword && newPassword) {
+                    updatedData.oldPassword = oldPassword;
+                    updatedData.newPassword = newPassword;
+                }
+
+                const decodedToken = parseJwt(token);  // Assuming `parseJwt` is a function that decodes the JWT token
+                const userId = decodedToken.userId;
+
+                // Send the updated data to the server via PUT request
+                fetch(`/api/users/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header
+                    },
+                    body: JSON.stringify(updatedData)  // Send the updated user data in the request body
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Failed to update account information');
+                        }
+                    })
+                    .then(data => {
+                        alert('Account updated successfully!');
+                        window.location.reload();  // Reload the page to reflect the updated info
+                    })
+                    .catch(error => {
+                        console.error('Error updating account:', error);
+                        alert('An error occurred while updating your account.');
+                    });
+            });
+
+            // // Handle account info update submission
+            // document.getElementById('editAccountForm').addEventListener('submit', function (event) {
+            //     event.preventDefault();  // Prevent the form's default submission behavior
+            //
+            //     // Collect updated user data from the form
+            //     const updatedUsername = document.getElementById('update-username').value;
+            //     const updatedEmail = document.getElementById('update-email').value;
+            //     const updatedPassword = document.getElementById('update-password').value;
+            //
+            //     // Create the request payload
+            //     const updatedData = {
+            //         username: updatedUsername,
+            //         email: updatedEmail
+            //     };
+            //
+            //     // If a password was provided, include it in the request payload
+            //     if (updatedPassword) {
+            //         updatedData.password = updatedPassword;
+            //     }
+            //
+            //     const token = localStorage.getItem('jwtToken');
+            //     const decodedToken = parseJwt(token);  // Use parseJwt function to decode the token
+            //     const userId = decodedToken.userId;  // Extract userId from decoded token
+            //
+            //     // Send the updated data to the server via PUT request
+            //     fetch(`/api/users/${userId}`, {
+            //         method: 'PUT',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //             'Authorization': 'Bearer ' + token  // Include the JWT token in Authorization header
+            //         },
+            //         body: JSON.stringify(updatedData)  // Send the updated user data in the request body
+            //     })
+            //         .then(response => {
+            //             if (response.ok) {
+            //                 return response.json();
+            //             } else {
+            //                 throw new Error('Failed to update account information');
+            //             }
+            //         })
+            //         .then(data => {
+            //             alert('Account updated successfully!');
+            //             window.location.reload();  // Reload the page to reflect the updated info
+            //         })
+            //         .catch(error => {
+            //             console.error('Error updating account:', error);
+            //             alert('An error occurred while updating your account.');
+            //         });
+            // });
+
+        });
     document.getElementById('logoutButton').addEventListener('click', async () => {
         try {
             // Remove the JWT token from localStorage (client-side logout)

@@ -67,23 +67,31 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
-    public User updateUser(User updatedUser) {
+    public User updateUser(User updatedUser, String oldPassword, String newPassword) {
         Optional<User> existingUser = userRepository.findById(updatedUser.getId());
         if (existingUser.isPresent()) {
             User user = existingUser.get();
 
-            // Only encode the password if it's being updated
-            if (!passwordEncoder.matches(updatedUser.getPasswordHash(), user.getPasswordHash())) {
-                updatedUser.setPasswordHash(passwordEncoder.encode(updatedUser.getPasswordHash()));
-            }
-
-            // Update other details as needed
+            // Update email and username
             user.setEmail(updatedUser.getEmail());
             user.setUsername(updatedUser.getUsername());
+
+            // Check if password update is requested
+            if (oldPassword != null && newPassword != null) {
+                if (passwordEncoder.matches(oldPassword, user.getPasswordHash())) {
+                    // Update password if old password matches
+                    user.setPasswordHash(passwordEncoder.encode(newPassword));
+                } else {
+                    throw new IllegalArgumentException("Old password does not match");
+                }
+            }
+
             return userRepository.save(user);
+        } else {
+            throw new ResourceNotFoundException("User not found");
         }
-        throw new ResourceNotFoundException("User not found");
     }
+
 
 
     // Delete a user account

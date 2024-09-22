@@ -90,15 +90,44 @@ public class UserController {
 
         try {
             User existingUser = userService.findByIdOrThrow(userId);
+
+            // Update the email and username
             existingUser.setUsername(updatedUserDTO.getUsername());
             existingUser.setEmail(updatedUserDTO.getEmail());
-            userService.updateUser(existingUser);
+
+            // Check if password change is requested
+            String oldPassword = updatedUserDTO.getOldPassword();
+            String newPassword = updatedUserDTO.getNewPassword();
+
+            // Update user with optional password change
+            userService.updateUser(existingUser, oldPassword, newPassword);
 
             return ResponseEntity.ok(existingUser);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update failed: " + e.getMessage());
         }
     }
+
+    // Update user information
+//    @PutMapping("/{userId}")
+//    public ResponseEntity<?> updateUser(@PathVariable Long userId, @Valid @RequestBody UserDTO updatedUserDTO, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return ResponseEntity.badRequest().body(result.getFieldErrors().stream()
+//                    .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+//                    .toList());
+//        }
+//
+//        try {
+//            User existingUser = userService.findByIdOrThrow(userId);
+//            existingUser.setUsername(updatedUserDTO.getUsername());
+//            existingUser.setEmail(updatedUserDTO.getEmail());
+//            userService.updateUser(existingUser);
+//
+//            return ResponseEntity.ok(existingUser);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update failed: " + e.getMessage());
+//        }
+//    }
 
     // Delete user
     @DeleteMapping("/{userId}")

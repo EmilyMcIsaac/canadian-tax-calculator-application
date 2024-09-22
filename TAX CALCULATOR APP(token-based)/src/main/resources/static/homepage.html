@@ -7,7 +7,62 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="data:," />
-
+    <style>
+        /* Custom styling */
+        .about-section, .how-it-works-section {
+            padding: 10px;
+        }
+        .about-section {
+            background-color: #f7f7f7;
+        }
+        .how-it-works-section {
+            background-color: white;
+        }
+        .how-it-works-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);*/
+        }
+        .how-it-works-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .icon {
+            font-size: 4rem;
+            color: #0d6efd;
+            margin-right: 1.5rem;
+        }
+        .how-it-works-step:nth-child(even) .icon {
+            margin-left: 1.5rem;
+            margin-right: 0;
+        }
+        .step-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .step-description {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+        .about-us-profiles {
+            margin-top: 2rem;
+        }
+        .about-us-profiles p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 <!-- Navigation Bar -->
@@ -20,6 +75,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="#about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how-it-works">How It Works</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
@@ -31,18 +92,74 @@
 </nav>
 
 <!-- Main Content -->
-<div class="container mt-5">
-    <div class="text-center">
-        <h1 class="display-3 fw-bold">Welcome to the Canadian Tax Calculator!</h1>
-        <p class="lead fs-4 mt-4"> Plug in your income and region, and we’ll give you an in-depth breakdown of your provincial
-            and federal taxes for the current year and an estimate of your net income after taxes are taken out.
-            Create an account to get started for free. </p>
-        <a href="register.html" class="btn btn-primary btn-lg mt-4">Get Started</a>
+<div class="container mt-5 text-center">
+    <h1 class="display-4 fw-bold">Welcome to the Canadian Tax Calculator</h1>
+    <p class="lead mt-4"> Plug in your income and region, and we’ll give you an in-depth breakdown of your provincial and federal taxes for the current year. Get started for free.</p>
+    <a href="register.html" class="btn btn-primary btn-lg mt-4">Get Started</a>
+</div>
+
+<!-- About Us Section -->
+<div class="about-section container mt-5" id="about-us">
+    <h2 class="section-heading text-center">About Us</h2>
+    <p class="fs-5 text-center">
+        We’re three students who noticed a lack of online tax calculators that have simple user interfaces and allow users to track and save multiple tax calculations over time. Our goal was to develop a Canadian tax calculator website where users can create an account to track their estimated tax payments year after year, and come back any time to view, update, or create new calculations.
+    </p>
+    <div class="about-us-profiles text-center">
+        <p>Emily McIsaac | Anne Houghton | Marissa-Mai Phu</p>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="how-it-works-section container mt-5" id="how-it-works">
+    <h2 class="section-heading text-center">How It Works</h2>
+
+    <!-- Step 1 -->
+    <div class="how-it-works-step">
+        <div class="icon text-center">
+            <i class="bi bi-cash-stack"></i>
+        </div>
+        <div>
+            <p class="step-title">Adjusting Income</p>
+            <p class="step-description">Our tax calculator first adjusts your income using federal and provincial basic personal amounts for the given year.</p>
+        </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="how-it-works-step">
+        <div class="icon text-center">
+            <i class="bi bi-file-earmark-bar-graph"></i>
+        </div>
+        <div>
+            <p class="step-title">Calculating Taxes</p>
+            <p class="step-description">We use Canada’s tax brackets to estimate your federal and provincial taxes, as well as your net income.</p>
+        </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="how-it-works-step">
+        <div class="icon text-center">
+            <i class="bi bi-percent"></i>
+        </div>
+        <div>
+            <p class="step-title">Estimates Only</p>
+            <p class="step-description">Our calculator does not include any personalized tax credits. Results are not an exact calculation of payable taxes.</p>
+        </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="how-it-works-step">
+        <div class="icon text-center">
+            <i class="bi bi-calculator"></i>
+        </div>
+        <div>
+            <p class="step-title">Preparing Your Finances</p>
+            <p class="step-description">We provide approximations to help you prepare financially for tax year-end.</p>
+        </div>
     </div>
 </div>
 
 <!-- Footer -->
-<footer class="bg-dark text-white py-3 mt-5">
+<footer class="bg-dark text-white py-4 mt-5">
     <div class="container text-center">
         <p class="mb-0">&copy; 2024 Canadian Tax Calculator. All Rights Reserved.</p>
     </div>
@@ -50,5 +167,240 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </body>
 </html>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Canadian Tax Calculator - Homepage</title>-->
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="icon" href="data:," />-->
+<!--    <style>-->
+<!--        /* Custom styling */-->
+<!--        .about-section, .how-it-works-section {-->
+<!--            padding: 4rem 0;-->
+<!--        }-->
+<!--        .about-section {-->
+<!--            background-color: #f7f7f7;-->
+<!--        }-->
+<!--        .how-it-works-section {-->
+<!--            background-color: #f1f1f1;-->
+<!--        }-->
+<!--        .how-it-works-step {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 2rem;-->
+<!--            padding: 2rem;-->
+<!--            border-radius: 12px;-->
+<!--            background-color: #fff;-->
+<!--            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);-->
+<!--        }-->
+<!--        .how-it-works-step:nth-child(even) {-->
+<!--            flex-direction: row-reverse;-->
+<!--        }-->
+<!--        .icon {-->
+<!--            font-size: 4rem;-->
+<!--            color: #0d6efd;-->
+<!--            margin-right: 1.5rem;-->
+<!--        }-->
+<!--        .how-it-works-step:nth-child(even) .icon {-->
+<!--            margin-left: 1.5rem;-->
+<!--            margin-right: 0;-->
+<!--        }-->
+<!--        .step-title {-->
+<!--            font-weight: bold;-->
+<!--            font-size: 1.5rem;-->
+<!--        }-->
+<!--        .step-description {-->
+<!--            font-size: 1.1rem;-->
+<!--            color: #555;-->
+<!--        }-->
+<!--        .section-heading {-->
+<!--            font-size: 2.5rem;-->
+<!--            font-weight: 600;-->
+<!--            margin-bottom: 3rem;-->
+<!--        }-->
+<!--        .about-us-profiles {-->
+<!--            margin-top: 2rem;-->
+<!--        }-->
+<!--        .about-us-profiles p {-->
+<!--            font-size: 1.2rem;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+<!--        footer p {-->
+<!--            font-size: 0.9rem;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; Navigation Bar &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="#">Tax Calculator</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#about-us">About Us</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#how-it-works">How It Works</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="login.html">Login</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="register.html">Register</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; Main Content &ndash;&gt;-->
+<!--<div class="container mt-5 text-center">-->
+<!--    <h1 class="display-4 fw-bold">Welcome to the Canadian Tax Calculator</h1>-->
+<!--    <p class="lead mt-4"> Plug in your income and region, and we’ll give you an in-depth breakdown of your provincial and federal taxes for the current year. Get started for free.</p>-->
+<!--    <a href="register.html" class="btn btn-primary btn-lg mt-4">Get Started</a>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; About Us Section &ndash;&gt;-->
+<!--<div class="about-section container mt-5" id="about-us">-->
+<!--    <h2 class="section-heading text-center">About Us</h2>-->
+<!--    <p class="fs-5 text-center">-->
+<!--        We’re three students who noticed a lack of online tax calculators that have simple user interfaces and allow users to track and save multiple tax calculations over time. Our goal was to develop a Canadian tax calculator website where users can create an account to track their estimated tax payments year after year, and come back any time to view, update, or create new calculations.-->
+<!--    </p>-->
+<!--    <div class="about-us-profiles text-center">-->
+<!--        <p>Emily McIsaac | Anne Houghton | Marissa-Mai Phu</p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; How It Works Section &ndash;&gt;-->
+<!--<div class="how-it-works-section container mt-5" id="how-it-works">-->
+<!--    <h2 class="section-heading text-center">How It Works</h2>-->
+
+<!--    &lt;!&ndash; Step 1 &ndash;&gt;-->
+<!--    <div class="how-it-works-step">-->
+<!--        <div class="icon text-center">-->
+<!--            <i class="bi bi-cash-stack"></i>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p class="step-title">Adjusting Income</p>-->
+<!--            <p class="step-description">Our tax calculator first adjusts your income using federal and provincial personal amounts for the given year.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Step 2 &ndash;&gt;-->
+<!--    <div class="how-it-works-step">-->
+<!--        <div class="icon text-center">-->
+<!--            <i class="bi bi-file-earmark-bar-graph"></i>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p class="step-title">Calculating Taxes</p>-->
+<!--            <p class="step-description">We use Canada’s tax brackets to estimate your federal and provincial taxes, as well as your net income.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Step 3 &ndash;&gt;-->
+<!--    <div class="how-it-works-step">-->
+<!--        <div class="icon text-center">-->
+<!--            <i class="bi bi-percent"></i>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p class="step-title">Estimates Only</p>-->
+<!--            <p class="step-description">Results are estimates, excluding personalized tax credits.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Step 4 &ndash;&gt;-->
+<!--    <div class="how-it-works-step">-->
+<!--        <div class="icon text-center">-->
+<!--            <i class="bi bi-calculator"></i>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p class="step-title">Preparing Your Finances</p>-->
+<!--            <p class="step-description">We provide approximations to help you prepare financially for tax year-end.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="bg-dark text-white py-4 mt-5">-->
+<!--    <div class="container text-center">-->
+<!--        <p class="mb-0">&copy; 2024 Canadian Tax Calculator. All Rights Reserved.</p>-->
+<!--    </div>-->
+<!--</footer>-->
+
+<!--&lt;!&ndash; Bootstrap JS &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--&lt;!&ndash; Bootstrap Icons &ndash;&gt;-->
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Canadian Tax Calculator - Homepage</title>-->
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="icon" href="data:," />-->
+
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; Navigation Bar &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="#">Tax Calculator</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="login.html">Login</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="register.html">Register</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; Main Content &ndash;&gt;-->
+<!--<div class="container mt-5">-->
+<!--    <div class="text-center">-->
+<!--        <h1 class="display-3 fw-bold">Welcome to the Canadian Tax Calculator!</h1>-->
+<!--        <p class="lead fs-4 mt-4"> Plug in your income and region, and we’ll give you an in-depth breakdown of your provincial-->
+<!--            and federal taxes for the current year and an estimate of your net income after taxes are taken out.-->
+<!--            Create an account to get started for free. </p>-->
+<!--        <a href="register.html" class="btn btn-primary btn-lg mt-4">Get Started</a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="bg-dark text-white py-3 mt-5">-->
+<!--    <div class="container text-center">-->
+<!--        <p class="mb-0">&copy; Canadian Tax Calculator. All Rights Reserved.</p>-->
+<!--    </div>-->
+<!--</footer>-->
+
+<!--&lt;!&ndash; Bootstrap JS &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
