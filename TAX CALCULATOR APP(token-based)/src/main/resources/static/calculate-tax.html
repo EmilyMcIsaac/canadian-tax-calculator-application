@@ -63,6 +63,14 @@
                                 <option value="yukon">Yukon</option>
                             </select>
                         </div>
+                        <!-- New Tax Year Dropdown -->
+                        <div class="mb-3">
+                            <label for="tax-year" class="form-label">Select Tax Year</label>
+                            <select class="form-select" id="tax-year" required>
+                                <option value="2024" selected>2024</option>
+                                <!-- Add additional tax years as needed -->
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary btn-block w-100">Calculate Taxes</button>
                     </form>
                 </div>
@@ -122,6 +130,7 @@
             const income = parseFloat(document.getElementById('income').value);
             const selectedProvince = document.getElementById('province').value;
             const province = provinceMap[selectedProvince] || selectedProvince;
+            const taxYear = document.getElementById('tax-year').value; // Get selected tax year
 
             // Validate the income and province
             if (income <= 0) {
@@ -130,6 +139,10 @@
             }
             if (province === "Select a province") {
                 alert('Please select a valid province.');
+                return;
+            }
+            if (!taxYear) {
+                alert('Please select a valid tax year.');
                 return;
             }
 
@@ -164,7 +177,8 @@
                     body: JSON.stringify({
                         income: income.toString(),
                         province: province,
-                        userId: userId // Include the correct userId from the JWT token
+                        userId: userId, // Include the correct userId from the JWT token
+                        taxYear: parseInt(taxYear) // Include the selected tax year
                     })
                 });
 

@@ -29,11 +29,11 @@ public class TaxCalculationService {
 
 
     // Create a new tax calculation
-    public TaxCalculation createTaxCalculation(BigDecimal income, String province, User user) {
+    public TaxCalculation createTaxCalculation(BigDecimal income, String province, int year, User user) {
 
         // Fetch BPAs for both federal and provincial taxes
-        BigDecimal federalBpa = bpaService.getBpa("federal", 2024, income);
-        BigDecimal provincialBpa = bpaService.getBpa(province, 2024, income);
+        BigDecimal federalBpa = bpaService.getBpa("federal", year, income);
+        BigDecimal provincialBpa = bpaService.getBpa(province, year, income);
 
         // Adjust taxable income by subtracting BPAs
         BigDecimal adjustedIncomeForFederalTaxes = income.subtract(federalBpa).max(BigDecimal.ZERO);
@@ -41,10 +41,10 @@ public class TaxCalculationService {
 
 
         // Fetch federal tax brackets
-        List<TaxBracket> federalBrackets = taxBracketRepository.findByRegionAndYear("federal", 2024);
+        List<TaxBracket> federalBrackets = taxBracketRepository.findByRegionAndYear("federal", year);
 
         // Fetch provincial tax brackets for the selected province
-        List<TaxBracket> provincialBrackets = taxBracketRepository.findByRegionAndYear(province.toLowerCase(), 2024);
+        List<TaxBracket> provincialBrackets = taxBracketRepository.findByRegionAndYear(province.toLowerCase(), year);
 
         System.out.println("Fetched Provincial Brackets: " + provincialBrackets);
 
@@ -59,6 +59,7 @@ public class TaxCalculationService {
         TaxCalculation taxCalculation = new TaxCalculation();
         taxCalculation.setIncome(income);
         taxCalculation.setRegion(province);
+        taxCalculation.setTaxYear(year);
         taxCalculation.setNetFederalTax(federalTax);
         taxCalculation.setNetProvincialTax(provincialTax);
         taxCalculation.setNetIncome(netIncome);

@@ -8,7 +8,7 @@
 25100||16398|C|G
 25100||-9223372036854775808|T|G
 25100||16398|T|G</Grants>
-      <IntrospectionStateNumber>1109</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1137</IntrospectionStateNumber>
       <ServerVersion>16.4</ServerVersion>
       <StartupTime>1726928689</StartupTime>
       <TimeZones>true ACDT
@@ -818,7 +818,7 @@ false Zulu
 14697||10|C|G
 14697||-9223372036854775808|U|G
 14697||10|U|G</Grants>
-      <IntrospectionStateNumber>1109</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1137</IntrospectionStateNumber>
       <ObjectId>25100</ObjectId>
       <OwnerName>emily</OwnerName>
     </database>
@@ -4248,8 +4248,8 @@ false Zulu
 25278||16398|t|G
 25278||16398|D|G
 25278||16398|w|G</Grants>
-      <IntrospectionStateNumber>1109</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-09-22.06:02:05</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1137</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-09-22.17:23:09</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4296,7 +4296,7 @@ false Zulu
     </sequence>
     <table id="273" parent="267" name="basic_personal_amounts">
       <ObjectId>25278</ObjectId>
-      <StateNumber>1108</StateNumber>
+      <StateNumber>1110</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>emily</OwnerName>
     </table>
@@ -4308,7 +4308,7 @@ false Zulu
     </table>
     <table id="275" parent="267" name="tax_calculations">
       <ObjectId>25126</ObjectId>
-      <StateNumber>968</StateNumber>
+      <StateNumber>1136</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>emily</OwnerName>
     </table>
@@ -4328,10 +4328,10 @@ false Zulu
       <DefaultExpression>nextval(&apos;basic_personal_amounts_bpa_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1094</StateNumber>
-      <StoredType>integer|0s</StoredType>
+      <StateNumber>1110</StateNumber>
+      <StoredType>bigint|0s</StoredType>
       <SequenceId>25277</SequenceId>
-      <TypeId>23</TypeId>
+      <TypeId>20</TypeId>
     </column>
     <column id="279" parent="273" name="region">
       <Position>2</Position>
@@ -4347,37 +4347,37 @@ false Zulu
     </column>
     <column id="281" parent="273" name="bpa_amount">
       <Position>4</Position>
-      <StateNumber>1094</StateNumber>
-      <StoredType>numeric(10,2 digit)|0s</StoredType>
+      <StateNumber>1111</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
     <column id="282" parent="273" name="bpa_phaseout_start">
       <Position>5</Position>
-      <StateNumber>1094</StateNumber>
-      <StoredType>numeric(10,2 digit)|0s</StoredType>
+      <StateNumber>1113</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
     <column id="283" parent="273" name="bpa_phaseout_end">
       <Position>6</Position>
-      <StateNumber>1094</StateNumber>
-      <StoredType>numeric(10,2 digit)|0s</StoredType>
+      <StateNumber>1112</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
     <index id="284" parent="273" name="basic_personal_amounts_pkey">
       <ColNames>bpa_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25282</ObjectId>
+      <ObjectId>25285</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1107</StateNumber>
+      <StateNumber>1110</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="285" parent="273" name="basic_personal_amounts_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25283</ObjectId>
+      <ObjectId>25286</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1094</StateNumber>
-      <UnderlyingIndexId>25282</UnderlyingIndexId>
+      <StateNumber>1110</StateNumber>
+      <UnderlyingIndexId>25285</UnderlyingIndexId>
     </key>
     <check id="286" parent="274" name="tax_brackets_tax_rate_check">
       <ColNames>tax_rate</ColNames>
@@ -4529,7 +4529,15 @@ max_income</ColNames>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <foreign-key id="307" parent="275" name="tax_calculations_user_id_fkey">
+    <column id="307" parent="275" name="tax_year">
+      <DefaultExpression>EXTRACT(year FROM CURRENT_DATE)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>11</Position>
+      <StateNumber>1136</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="308" parent="275" name="tax_calculations_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25255</ObjectId>
@@ -4538,7 +4546,7 @@ max_income</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>25102</RefTableId>
     </foreign-key>
-    <index id="308" parent="275" name="tax_calculations_pkey">
+    <index id="309" parent="275" name="tax_calculations_pkey">
       <ColNames>calculation_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25204</ObjectId>
@@ -4547,20 +4555,20 @@ max_income</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="309" parent="275" name="idx_tax_calculations_user_id">
+    <index id="310" parent="275" name="idx_tax_calculations_user_id">
       <ColNames>user_id</ColNames>
       <ObjectId>25217</ObjectId>
       <StateNumber>968</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="310" parent="275" name="tax_calculations_pkey">
+    <key id="311" parent="275" name="tax_calculations_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25205</ObjectId>
       <Primary>1</Primary>
       <StateNumber>962</StateNumber>
       <UnderlyingIndexId>25204</UnderlyingIndexId>
     </key>
-    <column id="311" parent="276" name="history_id">
+    <column id="312" parent="276" name="history_id">
       <DefaultExpression>nextval(&apos;tax_history_history_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4569,20 +4577,20 @@ max_income</ColNames>
       <SequenceId>25142</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="312" parent="276" name="calculation_id">
+    <column id="313" parent="276" name="calculation_id">
       <Position>2</Position>
       <StateNumber>970</StateNumber>
       <StoredType>bigint|0s</StoredType>
       <TypeId>20</TypeId>
     </column>
-    <column id="313" parent="276" name="saved_at">
+    <column id="314" parent="276" name="saved_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StateNumber>946</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="314" parent="276" name="tax_history_calculation_id_fkey">
+    <foreign-key id="315" parent="276" name="tax_history_calculation_id_fkey">
       <ColNames>calculation_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25237</ObjectId>
@@ -4591,7 +4599,7 @@ max_income</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>25126</RefTableId>
     </foreign-key>
-    <index id="315" parent="276" name="tax_history_pkey">
+    <index id="316" parent="276" name="tax_history_pkey">
       <ColNames>history_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25229</ObjectId>
@@ -4600,26 +4608,26 @@ max_income</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="316" parent="276" name="idx_tax_history_calculation_id">
+    <index id="317" parent="276" name="idx_tax_history_calculation_id">
       <ColNames>calculation_id</ColNames>
       <ObjectId>25236</ObjectId>
       <StateNumber>970</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="317" parent="276" name="tax_history_pkey">
+    <key id="318" parent="276" name="tax_history_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25230</ObjectId>
       <Primary>1</Primary>
       <StateNumber>969</StateNumber>
       <UnderlyingIndexId>25229</UnderlyingIndexId>
     </key>
-    <check id="318" parent="277" name="users_password_hash_check">
+    <check id="319" parent="277" name="users_password_hash_check">
       <ColNames>password_hash</ColNames>
       <ObjectId>25107</ObjectId>
       <Predicate>length((password_hash)::text) &gt;= 8</Predicate>
       <StateNumber>946</StateNumber>
     </check>
-    <column id="319" parent="277" name="user_id">
+    <column id="320" parent="277" name="user_id">
       <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4628,35 +4636,35 @@ max_income</ColNames>
       <SequenceId>25101</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="320" parent="277" name="username">
+    <column id="321" parent="277" name="username">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>973</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="321" parent="277" name="email">
+    <column id="322" parent="277" name="email">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>972</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="322" parent="277" name="password_hash">
+    <column id="323" parent="277" name="password_hash">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>946</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="323" parent="277" name="created_at">
+    <column id="324" parent="277" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>5</Position>
       <StateNumber>946</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <index id="324" parent="277" name="users_pkey">
+    <index id="325" parent="277" name="users_pkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25248</ObjectId>
@@ -4665,7 +4673,7 @@ max_income</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="325" parent="277" name="users_username_key">
+    <index id="326" parent="277" name="users_username_key">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25273</ObjectId>
@@ -4676,7 +4684,7 @@ max_income</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="326" parent="277" name="users_email_key">
+    <index id="327" parent="277" name="users_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25268</ObjectId>
@@ -4687,7 +4695,7 @@ max_income</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="327" parent="277" name="idx_users_username">
+    <index id="328" parent="277" name="idx_users_username">
       <ColNames>username</ColNames>
       <ObjectId>25275</ObjectId>
       <StateNumber>973</StateNumber>
@@ -4696,7 +4704,7 @@ max_income</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="328" parent="277" name="idx_users_email">
+    <index id="329" parent="277" name="idx_users_email">
       <ColNames>email</ColNames>
       <ObjectId>25270</ObjectId>
       <StateNumber>972</StateNumber>
@@ -4705,20 +4713,20 @@ max_income</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="329" parent="277" name="users_pkey">
+    <key id="330" parent="277" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25249</ObjectId>
       <Primary>1</Primary>
       <StateNumber>971</StateNumber>
       <UnderlyingIndexId>25248</UnderlyingIndexId>
     </key>
-    <key id="330" parent="277" name="users_username_key">
+    <key id="331" parent="277" name="users_username_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25274</ObjectId>
       <StateNumber>973</StateNumber>
       <UnderlyingIndexId>25273</UnderlyingIndexId>
     </key>
-    <key id="331" parent="277" name="users_email_key">
+    <key id="332" parent="277" name="users_email_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25269</ObjectId>
       <StateNumber>972</StateNumber>

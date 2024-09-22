@@ -43,16 +43,21 @@ public class TaxCalculation {
     @Column(nullable = false)
     private Boolean deleted;
 
+    // New taxYear field
+    @Column(name = "tax_year", nullable = false)
+    private int taxYear;
+
     @JsonIgnore
     @OneToMany(mappedBy = "taxCalculation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaxHistory> taxHistories;
 
     // Constructor
-    public TaxCalculation(User user, BigDecimal income, String region, BigDecimal provincialTax,
+    public TaxCalculation(User user, BigDecimal income, String region, int taxYear, BigDecimal provincialTax,
                           BigDecimal federalTax, BigDecimal netIncome, LocalDateTime calculationDate, boolean saved) {
         this.user = user;
         this.income = income;
         this.region = region;
+        this.taxYear = taxYear;
         this.provincialTax = provincialTax;
         this.federalTax = federalTax;
         this.netIncome = netIncome;
@@ -153,4 +158,12 @@ public class TaxCalculation {
     public void setTaxHistories(List<TaxHistory> taxHistories) {
         this.taxHistories = taxHistories;
     }
+
+    public int getTaxYear() {
+        return taxYear;
+    }
+    public void setTaxYear(int taxYear) {
+        this.taxYear = taxYear;
+    }
+
 }

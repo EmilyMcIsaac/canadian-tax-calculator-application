@@ -5,17 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de0e940d-9b20-46e8-ba14-303efc4f4890" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.ideaDataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.ideaDataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.iws" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699/storage_v2/_src_/database/tax_db.kg2Byw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/dataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699/storage_v2/_src_/database/tax_db.kg2Byw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxCalculationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxCalculationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/TaxCalculationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/TaxCalculationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/TaxCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/TaxCalculation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/calculate-tax.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/calculate-tax.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/tax-history.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/tax-history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/dto/TaxCalculationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/dto/TaxCalculationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/models/TaxCalculation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/models/TaxCalculation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/calculate-tax.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/calculate-tax.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/tax-history.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/tax-history.html" afterDir="false" />
     </list>
@@ -412,7 +415,8 @@
       <workItem from="1726980381355" duration="140000" />
       <workItem from="1726980557259" duration="97000" />
       <workItem from="1726980673687" duration="5204000" />
-      <workItem from="1727016039058" duration="6260000" />
+      <workItem from="1727016039058" duration="8985000" />
+      <workItem from="1727036436411" duration="201000" />
     </task>
     <servers />
   </component>

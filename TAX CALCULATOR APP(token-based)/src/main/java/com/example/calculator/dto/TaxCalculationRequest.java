@@ -7,6 +7,7 @@ public class TaxCalculationRequest {
     private BigDecimal income;
     private String province;
     private Long userId;
+    private int taxYear;
 
     public BigDecimal getIncome() {
         return income;
@@ -25,5 +26,12 @@ public class TaxCalculationRequest {
     }
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+    public int getTaxYear() {
+        return taxYear;
+    }
+
+    public void setTaxYear(int taxYear) {
+        this.taxYear = taxYear;
     }
 }

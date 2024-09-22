@@ -30,13 +30,14 @@ public class TaxCalculationController {
         BigDecimal income = request.getIncome();
         String province = request.getProvince().toLowerCase();
         Long userId = request.getUserId();
-
+        int taxYear = request.getTaxYear(); // Add the taxYear
 
         // Fetch the user from the UserService
-        User user = userService.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = userService.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        // Calculate the tax
-        TaxCalculation calculation = taxCalculationService.createTaxCalculation(income, province, user);
+        // Calculate the tax with the tax year
+        TaxCalculation calculation = taxCalculationService.createTaxCalculation(income, province, taxYear, user);
 
         return ResponseEntity.ok(calculation);
     }

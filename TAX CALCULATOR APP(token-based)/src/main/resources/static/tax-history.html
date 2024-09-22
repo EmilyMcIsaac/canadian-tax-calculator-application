@@ -132,7 +132,7 @@
         const row = document.createElement('tr');
         row.innerHTML = `
                 <td>${new Date(entry.savedAt).toLocaleDateString()}</td>
-                <td>${new Date(entry.savedAt).getFullYear()}</td>
+                <td>${calculation.taxYear}</td>
                 <td>$${calculation.income.toFixed(2)}</td>
                 <td>${calculation.region}</td>
                 <td>$${calculation.netFederalTax.toFixed(2)}</td>
