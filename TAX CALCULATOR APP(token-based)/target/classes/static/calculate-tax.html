@@ -20,10 +20,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../../../../../HTML_BOOTSTRAP_SCREEN_FLOW/account.html">My Account</a>
+                    <a id="accountButton" class="nav-link" href="/account.html">My Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../../../../HTML_BOOTSTRAP_SCREEN_FLOW/logout.html">Logout</a>
+                    <a id="logoutButton" class="nav-link" href="/logout.html">Logout</a>
                 </li>
             </ul>
         </div>
@@ -77,7 +77,9 @@
                     <p><strong>Federal Tax:</strong> $<span id="federalTax"></span></p>
                     <p><strong>Provincial Tax:</strong> $<span id="provincialTax"></span></p>
                     <p><strong>Total Net Income After Tax:</strong> $<span id="netIncome"></span></p>
-                    <button class="btn btn-success w-100 mt-3">Save to Tax History</button>
+                    <button id="saveTaxHistoryBtn" class="btn btn-success w-100 mt-3">Save to Tax History</button>
+                    <!-- View Tax History Button (Hidden Initially) -->
+                    <button id="viewTaxHistoryBtn" class="btn btn-primary w-100 mt-3" style="display: none;">View Tax History</button>
                 </div>
             </div>
         </div>
@@ -110,6 +112,7 @@
             "new-brunswick": "new brunswick",
             "prince-edward-island": "prince edward island",
             "british-columbia": "british columbia",
+            "northwest-territories": "northwest territories",
             // Add all other provinces with spaces here...
         };
 
@@ -170,6 +173,10 @@
                     const data = await response.json();
                     console.log(data); // Check response structure in console
 
+                    viewTaxHistoryBtn.style.display = 'none';
+
+                    lastCalculationId = data.id;
+
                     // Display the results
                     federalTaxElement.textContent = data.netFederalTax.toFixed(2);
                     provincialTaxElement.textContent = data.netProvincialTax.toFixed(2);
@@ -195,6 +202,44 @@
             }
         });
 
+        // Handle "Save to Tax History" button click
+        document.getElementById('saveTaxHistoryBtn').addEventListener('click', async () => {
+            if (!lastCalculationId) {
+                alert('No calculation to save. Please calculate taxes first.');
+                return;
+            }
+
+            const token = localStorage.getItem('jwtToken');
+            if (!token) {
+                alert('You must be logged in to save your tax history.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/tax-history/save/${lastCalculationId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    alert('Tax calculation saved to history!');
+                    viewTaxHistoryBtn.style.display = 'block';
+                } else {
+                    alert('Failed to save tax history.');
+                }
+            } catch (error) {
+                console.error('Error saving to tax history:', error);
+                alert('An error occurred while saving the tax history.');
+            }
+        });
+
+        // Handle "View Tax History" button click
+        document.getElementById('viewTaxHistoryBtn').addEventListener('click', () => {
+            window.location.href = '/tax-history.html'; // Redirect to the tax history page
+        });
+
         // Helper function to decode JWT
         function parseJwt(token) {
             let base64Url = token.split('.')[1];
@@ -208,6 +253,18 @@
 
     });
 
+
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+        try {
+            // Remove the JWT token from localStorage (client-side logout)
+            localStorage.removeItem('jwtToken');
+            // Redirect to the login page after logging out
+            window.location.href = '/login.html';
+        } catch (error) {
+            console.error('Error logging out:', error);
+            alert('An error occurred while logging out.');
+        }
+    });
 
 </script>
 

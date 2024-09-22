@@ -3,6 +3,7 @@ package com.example.calculator.services;
 import com.example.calculator.exception.ResourceNotFoundException;
 import com.example.calculator.models.*;
 import com.example.calculator.repositories.*;
+import com.example.calculator.services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaxCalculationService {
@@ -50,6 +52,8 @@ public class TaxCalculationService {
         taxCalculation.setNetIncome(netIncome);
         taxCalculation.setUser(user);
         taxCalculation.setCalculationDate(LocalDateTime.now());
+        taxCalculation.setSaved(false);  // Whether to save the calculation to tax history
+        taxCalculation.setDeleted(false);  // Ensure it's not marked as deleted
 
         return taxCalculationRepository.save(taxCalculation);
     }
@@ -77,24 +81,24 @@ public class TaxCalculationService {
         return totalTax;
     }
 
-    // Find all tax calculations by user
-    public List<TaxCalculation> getAllCalculationsByUser(User user) {
+    // Soft-delete a tax calculation
+    public void softDeleteTaxCalculation(Long calculationId) {
+        TaxCalculation taxCalculation = taxCalculationRepository.findByIdAndDeletedFalse(calculationId)
+                .orElseThrow(() -> new ResourceNotFoundException("Calculation not found"));
+
+        taxCalculation.setDeleted(true);  // Soft delete
+        taxCalculationRepository.save(taxCalculation);
+    }
+
+    // Get all tax calculations for a user that are not deleted
+    public List<TaxCalculation> getAllForUser(User user) {
         return taxCalculationRepository.findByUserAndDeletedFalse(user);
     }
 
-    // Soft delete a tax calculation
-    public void deleteTaxCalculation(Long calculationId) {
-        TaxCalculation calculation = taxCalculationRepository.findById(calculationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Calculation not found"));
-        calculation.setDeleted(true);
-        taxCalculationRepository.save(calculation);
+    // Find a tax calculation by ID
+    public Optional<TaxCalculation> findById(Long calculationId) {
+        return taxCalculationRepository.findByIdAndDeletedFalse(calculationId);
     }
 
-    // Restore a deleted calculation (optional)
-    public void restoreDeletedCalculation(Long calculationId) {
-        TaxCalculation calculation = taxCalculationRepository.findById(calculationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Calculation not found"));
-        calculation.setDeleted(false);
-        taxCalculationRepository.save(calculation);
-    }
 }
+

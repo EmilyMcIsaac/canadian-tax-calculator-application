@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.html">Logout</a>
+                    <a id="logoutButton" class="nav-link" href="logout.html">Logout</a>
                 </li>
             </ul>
         </div>
@@ -248,6 +248,17 @@
     });
     });
 
+    });
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+        try {
+            // Remove the JWT token from localStorage (client-side logout)
+            localStorage.removeItem('jwtToken');
+            // Redirect to the login page after logging out
+            window.location.href = '/login.html';
+        } catch (error) {
+            console.error('Error logging out:', error);
+            alert('An error occurred while logging out.');
+        }
     });
 
 </script>

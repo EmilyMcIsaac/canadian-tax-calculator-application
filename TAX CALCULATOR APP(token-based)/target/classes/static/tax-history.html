@@ -20,10 +20,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="account.html">My Account</a>
+                    <a id="accountButton" class="nav-link" href="/account.html">My Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.html">Logout</a>
+                    <a id="logoutButton" class="nav-link" href="/logout.html">Logout</a>
                 </li>
             </ul>
         </div>
@@ -58,7 +58,6 @@
                     <td>$4,500</td>
                     <td>$38,000</td> <!-- Net Income Value -->
                     <td>
-                        <button class="btn btn-warning btn-sm">Update</button>
                         <button class="btn btn-danger btn-sm" onclick="confirm('Are you sure you want to delete this record?')">Delete</button>
                     </td>
                 </tr>
@@ -76,6 +75,11 @@
                 </tr>
                 </tbody>
             </table>
+
+            <!-- Button to redirect to calculate taxes page -->
+            <div class="text-center mt-4">
+                <button id="calculateMoreBtn" class="btn btn-primary">Calculate More Taxes</button>
+            </div>
         </div>
     </div>
 </div>
@@ -91,81 +95,132 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const userId = 1; // Replace with the actual user ID from session or authentication
+        document.addEventListener('DOMContentLoaded', () => {
         const historyTableBody = document.querySelector('table tbody');
+
+        // Get the JWT token from localStorage (or wherever it's stored)
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+        alert('You must be logged in to view your tax history.');
+        window.location.href = '/login.html';
+        return;
+    }
+
+        // Decode the JWT token to extract user information (like userId)
+        const decodedToken = parseJwt(token);
+        const userId = decodedToken.userId; // Extract the userId from the token
 
         // Fetch tax history for the user when the page loads
         async function fetchTaxHistory() {
-            try {
-                const response = await fetch(`/api/tax-history/user/${userId}`);
-                if (response.ok) {
-                    const taxHistory = await response.json();
-                    displayTaxHistory(taxHistory);
-                } else {
-                    alert('Failed to load tax history.');
-                }
-            } catch (error) {
-                console.error('Error fetching tax history:', error);
-                alert('An error occurred while fetching tax history.');
-            }
-        }
+        try {
+        const response = await fetch(`/api/tax-history/user/${userId}`, {
+        headers: {
+        'Authorization': `Bearer ${token}`  // Pass the JWT token in the Authorization header
+    }
+    });
+
+        if (response.ok) {
+        const taxHistory = await response.json();
+        displayTaxHistory(taxHistory);
+    } else if (response.status === 403) {
+        alert('Unauthorized: You do not have access to this data. Please log in again.');
+        window.location.href = '/login.html';
+    } else {
+        alert('Failed to load tax history.');
+    }
+    } catch (error) {
+        console.error('Error fetching tax history:', error);
+        alert('An error occurred while fetching tax history.');
+    }
+    }
 
         // Display tax history in the table
         function displayTaxHistory(taxHistory) {
-            historyTableBody.innerHTML = ''; // Clear existing rows
-            taxHistory.forEach(entry => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                <td>${new Date(entry.calculationDate).toLocaleDateString()}</td>
-                <td>$${entry.income.toFixed(2)}</td>
-                <td>${entry.region}</td>
-                <td>$${entry.netFederalTax.toFixed(2)}</td>
-                <td>$${entry.netProvincialTax.toFixed(2)}</td>
-                <td>$${entry.netIncome.toFixed(2)}</td>
+        historyTableBody.innerHTML = ''; // Clear existing rows
+        taxHistory.forEach(entry => {
+        const calculation = entry.taxCalculation;  // Access the nested TaxCalculation object
+        const row = document.createElement('tr');
+        row.innerHTML = `
+                <td>${new Date(entry.savedAt).toLocaleDateString()}</td>
+                <td>$${calculation.income.toFixed(2)}</td>
+                <td>${calculation.region}</td>
+                <td>$${calculation.netFederalTax.toFixed(2)}</td>
+                <td>$${calculation.netProvincialTax.toFixed(2)}</td>
+                <td>$${calculation.netIncome.toFixed(2)}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm" onclick="updateTaxHistory(${entry.id})">Update</button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteTaxHistory(${entry.id})">Delete</button>
+                    <button class="btn btn-danger btn-sm delete-button" data-id="${entry.id}">Delete</button>
                 </td>
             `;
-                historyTableBody.appendChild(row);
-            });
-        }
+        historyTableBody.appendChild(row);
+    });
+
+        // Attach event listeners for delete buttons
+        document.querySelectorAll('.delete-button').forEach(button => {
+        button.addEventListener('click', function() {
+        const taxHistoryId = this.getAttribute('data-id');
+        deleteTaxHistory(taxHistoryId); // Call deleteTaxHistory function on click
+    });
+    });
+    }
 
         // Handle delete action
         async function deleteTaxHistory(taxHistoryId) {
-            if (confirm('Are you sure you want to delete this record?')) {
-                try {
-                    const response = await fetch(`/api/tax-history/${taxHistoryId}`, {
-                        method: 'DELETE'
-                    });
+        if (confirm('Are you sure you want to delete this record?')) {
+        try {
+        const response = await fetch(`/api/tax-history/delete/${taxHistoryId}`, {
+        method: 'DELETE',
+        headers: {
+        'Authorization': `Bearer ${token}`  // Pass the JWT token in the Authorization header
+    }
+    });
 
-                    if (response.ok) {
-                        alert('Tax record deleted successfully.');
-                        fetchTaxHistory(); // Refresh the table after deletion
-                    } else {
-                        alert('Failed to delete the tax record.');
-                    }
-                } catch (error) {
-                    console.error('Error deleting tax record:', error);
-                    alert('An error occurred while deleting the record.');
-                }
-            }
-        }
+        if (response.ok) {
+        alert('Tax record deleted successfully.');
+        fetchTaxHistory(); // Refresh the table after deletion
+    } else {
+        alert('Failed to delete the tax record.');
+    }
+    } catch (error) {
+        console.error('Error deleting tax record:', error);
+        alert('An error occurred while deleting the record.');
+    }
+    }
+    }
 
-        // Placeholder for update functionality
-        function updateTaxHistory(taxHistoryId) {
-            // Logic for updating the tax history
-            alert(`Update functionality not implemented yet for record ${taxHistoryId}`);
-        }
+        // Helper function to decode JWT
+        function parseJwt(token) {
+        let base64Url = token.split('.')[1];
+        let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+        return JSON.parse(jsonPayload);
+    }
 
         // Initial fetch of tax history on page load
         fetchTaxHistory();
     });
 
+        // Handle redirect to calculate more taxes
+        document.getElementById('calculateMoreBtn').addEventListener('click', () => {
+            window.location.href = '/calculate-tax.html';  // Redirect to calculate taxes page
+        });
+
+
+        document.getElementById('logoutButton').addEventListener('click', async () => {
+        try {
+        // Remove the JWT token from localStorage (client-side logout)
+        localStorage.removeItem('jwtToken');
+        // Redirect to the login page after logging out
+        window.location.href = '/login.html';
+    } catch (error) {
+        console.error('Error logging out:', error);
+        alert('An error occurred while logging out.');
+    }
+
+    });
 </script>
-
-
 
 </body>
 </html>

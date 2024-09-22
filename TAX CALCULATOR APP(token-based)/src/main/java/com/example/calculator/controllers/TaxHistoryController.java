@@ -1,5 +1,6 @@
 package com.example.calculator.controllers;
 
+import com.example.calculator.exception.ResourceNotFoundException;
 import com.example.calculator.models.*;
 import com.example.calculator.services.*;
 
@@ -8,38 +9,50 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tax-history")
 public class TaxHistoryController {
 
+    private final UserService userService;  // Declare the userService
     private final TaxHistoryService taxHistoryService;
 
+    // Constructor-based dependency injection
     @Autowired
-    public TaxHistoryController(TaxHistoryService taxHistoryService) {
+    public TaxHistoryController(UserService userService, TaxHistoryService taxHistoryService) {
+        this.userService = userService;
         this.taxHistoryService = taxHistoryService;
     }
 
-    // Save tax calculation to history
-    @PostMapping("/")
-    public ResponseEntity<TaxHistory> saveToHistory(@RequestBody TaxHistory taxHistory) {
-        return ResponseEntity.ok(taxHistoryService.saveToHistory(taxHistory));
+    @PostMapping("/save/{calculationId}")
+    public ResponseEntity<TaxHistory> saveToHistory(@PathVariable Long calculationId) {
+        TaxHistory savedHistory = taxHistoryService.saveToHistory(calculationId);
+        return ResponseEntity.ok(savedHistory);
+    }
+
+    // Save a tax calculation to history
+    @PostMapping("/save")
+    public ResponseEntity<?> saveTaxToHistory(@RequestBody Long calculationId) {
+        TaxHistory savedHistory = taxHistoryService.saveToHistory(calculationId);
+        return ResponseEntity.ok(savedHistory);
     }
 
     // Get all tax history entries for a user
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<TaxHistory>> getTaxHistoryForUser(@PathVariable Long userId) {
-        User user = new User(); // Replace with actual user retrieval logic
-        user.setId(userId);
-        return ResponseEntity.ok(taxHistoryService.getHistoryByUser(user));
+        User user = userService.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        List<TaxHistory> history = taxHistoryService.getUserTaxHistory(user);
+        return ResponseEntity.ok(history);
     }
 
-    // Get all tax history entries for a tax calculation
-    @GetMapping("/calculation/{calculationId}")
-    public ResponseEntity<List<TaxHistory>> getTaxHistoryForCalculation(@PathVariable Long calculationId) {
-        TaxCalculation calculation = new TaxCalculation(); // Replace with actual calculation retrieval
-        calculation.setId(calculationId);
-        return ResponseEntity.ok(taxHistoryService.getHistoryByCalculation(calculation));
+    // Soft delete a tax history entry
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteTaxHistoryEntry(@PathVariable Long id) {
+        taxHistoryService.deleteFromHistory(id);
+        return ResponseEntity.ok(Map.of("message", "Tax history entry deleted successfully"));
     }
 }
 

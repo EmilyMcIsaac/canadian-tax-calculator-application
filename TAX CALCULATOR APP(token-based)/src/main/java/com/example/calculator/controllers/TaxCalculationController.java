@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tax-calculations")
@@ -40,25 +41,21 @@ public class TaxCalculationController {
         return ResponseEntity.ok(calculation);
     }
 
-    // Get all tax calculations for a user
+    // Endpoint to soft delete a tax calculation
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteTaxCalculation(@PathVariable Long id) {
+        taxCalculationService.softDeleteTaxCalculation(id);
+        return ResponseEntity.ok(Map.of("message", "Tax calculation deleted successfully"));
+    }
+
+    // Get all tax calculations for the current user
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<TaxCalculation>> getAllCalculationsForUser(@PathVariable Long userId) {
-        User user = new User(); // Replace with actual user retrieval logic
-        user.setId(userId);
-        return ResponseEntity.ok(taxCalculationService.getAllCalculationsByUser(user));
-    }
+    public ResponseEntity<List<TaxCalculation>> getAllTaxCalculationsForUser(@PathVariable Long userId) {
+        User user = userService.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-    // Soft delete a tax calculation
-    @DeleteMapping("/{calculationId}")
-    public ResponseEntity<Void> deleteTaxCalculation(@PathVariable Long calculationId) {
-        taxCalculationService.deleteTaxCalculation(calculationId);
-        return ResponseEntity.noContent().build();
-    }
-
-    // Restore a deleted calculation
-    @PostMapping("/restore/{calculationId}")
-    public ResponseEntity<Void> restoreTaxCalculation(@PathVariable Long calculationId) {
-        taxCalculationService.restoreDeletedCalculation(calculationId);
-        return ResponseEntity.noContent().build();
+        List<TaxCalculation> calculations = taxCalculationService.getAllForUser(user);
+        return ResponseEntity.ok(calculations);
     }
 }
+

@@ -1,5 +1,6 @@
 package com.example.calculator.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -42,6 +43,7 @@ public class TaxCalculation {
     @Column(nullable = false)
     private Boolean deleted;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "taxCalculation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaxHistory> taxHistories;
 
