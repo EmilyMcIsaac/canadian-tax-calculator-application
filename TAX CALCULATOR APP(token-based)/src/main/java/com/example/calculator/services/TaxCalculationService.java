@@ -18,15 +18,27 @@ public class TaxCalculationService {
 
     private final TaxCalculationRepository taxCalculationRepository;
     private final TaxBracketRepository taxBracketRepository;
+    private final BPAService bpaService;
 
     @Autowired
-    public TaxCalculationService(TaxCalculationRepository taxCalculationRepository, TaxBracketRepository taxBracketRepository) {
+    public TaxCalculationService(TaxCalculationRepository taxCalculationRepository, TaxBracketRepository taxBracketRepository, BPAService bpaService) {
         this.taxCalculationRepository = taxCalculationRepository;
         this.taxBracketRepository = taxBracketRepository;
+        this.bpaService = bpaService;
     }
+
 
     // Create a new tax calculation
     public TaxCalculation createTaxCalculation(BigDecimal income, String province, User user) {
+
+        // Fetch BPAs for both federal and provincial taxes
+        BigDecimal federalBpa = bpaService.getBpa("federal", 2024, income);
+        BigDecimal provincialBpa = bpaService.getBpa(province, 2024, income);
+
+        // Adjust taxable income by subtracting BPAs
+        BigDecimal adjustedIncomeForFederalTaxes = income.subtract(federalBpa).max(BigDecimal.ZERO);
+        BigDecimal adjustedIncomeForProvincialTaxes = income.subtract(provincialBpa).max(BigDecimal.ZERO);
+
 
         // Fetch federal tax brackets
         List<TaxBracket> federalBrackets = taxBracketRepository.findByRegionAndYear("federal", 2024);
@@ -36,9 +48,9 @@ public class TaxCalculationService {
 
         System.out.println("Fetched Provincial Brackets: " + provincialBrackets);
 
-        // Calculate federal and provincial taxes
-        BigDecimal federalTax = calculateTaxForBrackets(income, federalBrackets);
-        BigDecimal provincialTax = calculateTaxForBrackets(income, provincialBrackets);
+        // Calculate federal and provincial taxes INCLUDING BPAs
+        BigDecimal federalTax = calculateTaxForBrackets(adjustedIncomeForFederalTaxes, federalBrackets);
+        BigDecimal provincialTax = calculateTaxForBrackets(adjustedIncomeForProvincialTaxes, provincialBrackets);
 
         // Calculate net income after taxes
         BigDecimal netIncome = income.subtract(federalTax).subtract(provincialTax);

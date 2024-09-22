@@ -8,6 +8,7 @@ com\example\calculator\dto\UserDTO.class
 com\example\calculator\services\TaxBracketService.class
 com\example\calculator\exception\GlobalExceptionHandler.class
 com\example\calculator\repositories\TaxHistoryRepository.class
+com\example\calculator\services\BPAService.class
 com\example\calculator\dto\TaxCalculationRequest.class
 com\example\calculator\controllers\WebController.class
 com\example\calculator\exception\ResourceNotFoundException.class
@@ -21,13 +22,16 @@ com\example\calculator\dto\LoginRequest.class
 com\example\calculator\controllers\TaxHistoryController.class
 com\example\calculator\controllers\UserController.class
 com\example\calculator\models\TaxCalculation.class
+com\example\calculator\models\BasicPersonalAmount.class
 com\example\calculator\security\CustomUserDetails.class
 com\example\calculator\models\TaxHistory.class
 com\example\calculator\TaxCalculatorApp.class
 com\example\calculator\security\jwt\JwtAuthorizationFilter.class
 com\example\calculator\services\TaxCalculationService.class
+com\example\calculator\repositories\BasicPersonalAmountRepository.class
 com\example\calculator\security\SecurityConfig.class
 com\example\calculator\security\PasswordEncoderConfig.class
 com\example\calculator\models\User.class
+com\example\calculator\controllers\BPAController.class
 com\example\calculator\security\jwt\JwtAuthenticationFilter.class
 com\example\calculator\services\TaxHistoryService.class

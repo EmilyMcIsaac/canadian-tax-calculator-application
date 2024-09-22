@@ -3,17 +3,14 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>948</IntrospectionStateNumber>
+      <Grants>25100||-9223372036854775808|c|G
+25100||16398|c|G
+25100||16398|C|G
+25100||-9223372036854775808|T|G
+25100||16398|T|G</Grants>
+      <IntrospectionStateNumber>1109</IntrospectionStateNumber>
       <ServerVersion>16.4</ServerVersion>
-      <StartupTime>1726371521</StartupTime>
+      <StartupTime>1726928689</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -821,7 +818,7 @@ false Zulu
 14697||10|C|G
 14697||-9223372036854775808|U|G
 14697||10|U|G</Grants>
-      <IntrospectionStateNumber>948</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1109</IntrospectionStateNumber>
       <ObjectId>25100</ObjectId>
       <OwnerName>emily</OwnerName>
     </database>
@@ -4244,493 +4241,488 @@ false Zulu
     <schema id="267" parent="5" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>948</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-09-18.23:56:01</LastIntrospectionLocalTimestamp>
+      <Grants>25278||16398|d|G
+25278||16398|a|G
+25278||16398|x|G
+25278||16398|r|G
+25278||16398|t|G
+25278||16398|D|G
+25278||16398|w|G</Grants>
+      <IntrospectionStateNumber>1109</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-09-22.06:02:05</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <sequence id="268" parent="267" name="sessions_session_id_seq">
-      <ObjectId>25156</ObjectId>
+    <sequence id="268" parent="267" name="basic_personal_amounts_bpa_id_seq">
+      <ObjectId>25277</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>946</StateNumber>
+      <StateNumber>1107</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </sequence>
     <sequence id="269" parent="267" name="tax_brackets_bracket_id_seq">
       <ObjectId>25116</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>946</StateNumber>
+      <StateNumber>951</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </sequence>
     <sequence id="270" parent="267" name="tax_calculations_calculation_id_seq">
       <ObjectId>25125</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>946</StateNumber>
+      <StateNumber>952</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </sequence>
     <sequence id="271" parent="267" name="tax_history_history_id_seq">
       <ObjectId>25142</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>946</StateNumber>
+      <StateNumber>953</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </sequence>
     <sequence id="272" parent="267" name="users_user_id_seq">
       <ObjectId>25101</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>946</StateNumber>
+      <StateNumber>954</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </sequence>
-    <table id="273" parent="267" name="sessions">
-      <ObjectId>25157</ObjectId>
-      <StateNumber>946</StateNumber>
+    <table id="273" parent="267" name="basic_personal_amounts">
+      <ObjectId>25278</ObjectId>
+      <StateNumber>1108</StateNumber>
       <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </table>
     <table id="274" parent="267" name="tax_brackets">
       <ObjectId>25117</ObjectId>
-      <StateNumber>946</StateNumber>
+      <StateNumber>961</StateNumber>
       <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </table>
     <table id="275" parent="267" name="tax_calculations">
       <ObjectId>25126</ObjectId>
-      <StateNumber>946</StateNumber>
+      <StateNumber>968</StateNumber>
       <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </table>
     <table id="276" parent="267" name="tax_history">
       <ObjectId>25143</ObjectId>
-      <StateNumber>946</StateNumber>
+      <StateNumber>970</StateNumber>
       <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </table>
     <table id="277" parent="267" name="users">
       <ObjectId>25102</ObjectId>
-      <StateNumber>946</StateNumber>
+      <StateNumber>972</StateNumber>
       <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
+      <OwnerName>emily</OwnerName>
     </table>
-    <column id="278" parent="273" name="session_id">
-      <DefaultExpression>nextval(&apos;sessions_session_id_seq&apos;::regclass)</DefaultExpression>
+    <column id="278" parent="273" name="bpa_id">
+      <DefaultExpression>nextval(&apos;basic_personal_amounts_bpa_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>946</StateNumber>
+      <StateNumber>1094</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <SequenceId>25156</SequenceId>
+      <SequenceId>25277</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="279" parent="273" name="user_id">
+    <column id="279" parent="273" name="region">
       <Position>2</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="280" parent="273" name="session_token">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>946</StateNumber>
+      <StateNumber>1094</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="281" parent="273" name="expires_at">
-      <NotNull>1</NotNull>
+    <column id="280" parent="273" name="year">
+      <Position>3</Position>
+      <StateNumber>1094</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="281" parent="273" name="bpa_amount">
       <Position>4</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>timestamp|0s</StoredType>
-      <TypeId>1114</TypeId>
+      <StateNumber>1094</StateNumber>
+      <StoredType>numeric(10,2 digit)|0s</StoredType>
+      <TypeId>1700</TypeId>
     </column>
-    <column id="282" parent="273" name="created_at">
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    <column id="282" parent="273" name="bpa_phaseout_start">
       <Position>5</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>timestamp|0s</StoredType>
-      <TypeId>1114</TypeId>
+      <StateNumber>1094</StateNumber>
+      <StoredType>numeric(10,2 digit)|0s</StoredType>
+      <TypeId>1700</TypeId>
     </column>
-    <foreign-key id="283" parent="273" name="sessions_user_id_fkey">
-      <ColNames>user_id</ColNames>
+    <column id="283" parent="273" name="bpa_phaseout_end">
+      <Position>6</Position>
+      <StateNumber>1094</StateNumber>
+      <StoredType>numeric(10,2 digit)|0s</StoredType>
+      <TypeId>1700</TypeId>
+    </column>
+    <index id="284" parent="273" name="basic_personal_amounts_pkey">
+      <ColNames>bpa_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25164</ObjectId>
-      <OnDelete>cascade</OnDelete>
-      <StateNumber>946</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>25102</RefTableId>
-    </foreign-key>
-    <index id="284" parent="273" name="sessions_pkey">
-      <ColNames>session_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25162</ObjectId>
+      <ObjectId>25282</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
+      <StateNumber>1107</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="285" parent="273" name="idx_sessions_user_id">
-      <ColNames>user_id</ColNames>
-      <ObjectId>25169</ObjectId>
-      <StateNumber>946</StateNumber>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="286" parent="273" name="sessions_pkey">
+    <key id="285" parent="273" name="basic_personal_amounts_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25163</ObjectId>
+      <ObjectId>25283</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25162</UnderlyingIndexId>
+      <StateNumber>1094</StateNumber>
+      <UnderlyingIndexId>25282</UnderlyingIndexId>
     </key>
-    <check id="287" parent="274" name="tax_brackets_tax_rate_check">
+    <check id="286" parent="274" name="tax_brackets_tax_rate_check">
       <ColNames>tax_rate</ColNames>
-      <ObjectId>25122</ObjectId>
+      <ObjectId>25198</ObjectId>
       <Predicate>(tax_rate &gt; (0)::numeric) AND (tax_rate &lt;= (1)::numeric)</Predicate>
-      <StateNumber>946</StateNumber>
+      <StateNumber>961</StateNumber>
     </check>
-    <check id="288" parent="274" name="tax_brackets_check">
+    <check id="287" parent="274" name="tax_brackets_check">
       <ColNames>min_income
 max_income</ColNames>
-      <ObjectId>25121</ObjectId>
+      <ObjectId>25197</ObjectId>
       <Predicate>min_income &lt; max_income</Predicate>
-      <StateNumber>946</StateNumber>
+      <StateNumber>959</StateNumber>
     </check>
-    <column id="289" parent="274" name="bracket_id">
+    <column id="288" parent="274" name="bracket_id">
       <DefaultExpression>nextval(&apos;tax_brackets_bracket_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
+      <StateNumber>957</StateNumber>
+      <StoredType>bigint|0s</StoredType>
       <SequenceId>25116</SequenceId>
-      <TypeId>23</TypeId>
+      <TypeId>20</TypeId>
     </column>
-    <column id="290" parent="274" name="region">
+    <column id="289" parent="274" name="region">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
+      <StateNumber>960</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="291" parent="274" name="year">
+    <column id="290" parent="274" name="year">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>946</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="292" parent="274" name="min_income">
+    <column id="291" parent="274" name="min_income">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(15,2 digit)|0s</StoredType>
+      <StateNumber>959</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="293" parent="274" name="max_income">
+    <column id="292" parent="274" name="max_income">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(15,2 digit)|0s</StoredType>
+      <StateNumber>958</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="294" parent="274" name="tax_rate">
+    <column id="293" parent="274" name="tax_rate">
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(5,4 digit)|0s</StoredType>
+      <StateNumber>961</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <index id="295" parent="274" name="tax_brackets_pkey">
+    <index id="294" parent="274" name="tax_brackets_pkey">
       <ColNames>bracket_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25123</ObjectId>
+      <ObjectId>25190</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
+      <StateNumber>961</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="296" parent="274" name="tax_brackets_pkey">
+    <key id="295" parent="274" name="tax_brackets_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25124</ObjectId>
+      <ObjectId>25191</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25123</UnderlyingIndexId>
+      <StateNumber>957</StateNumber>
+      <UnderlyingIndexId>25190</UnderlyingIndexId>
     </key>
-    <check id="297" parent="275" name="tax_calculations_income_check">
+    <check id="296" parent="275" name="tax_calculations_income_check">
       <ColNames>income</ColNames>
-      <ObjectId>25133</ObjectId>
+      <ObjectId>25216</ObjectId>
       <Predicate>income &gt; (0)::numeric</Predicate>
-      <StateNumber>946</StateNumber>
+      <StateNumber>964</StateNumber>
     </check>
-    <column id="298" parent="275" name="calculation_id">
+    <column id="297" parent="275" name="calculation_id">
       <DefaultExpression>nextval(&apos;tax_calculations_calculation_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
+      <StateNumber>962</StateNumber>
+      <StoredType>bigint|0s</StoredType>
       <SequenceId>25125</SequenceId>
-      <TypeId>23</TypeId>
+      <TypeId>20</TypeId>
     </column>
-    <column id="299" parent="275" name="user_id">
+    <column id="298" parent="275" name="user_id">
       <Position>2</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
+      <StateNumber>968</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
     </column>
-    <column id="300" parent="275" name="income">
+    <column id="299" parent="275" name="income">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(15,2 digit)|0s</StoredType>
+      <StateNumber>964</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="301" parent="275" name="region">
+    <column id="300" parent="275" name="region">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
+      <StateNumber>967</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="302" parent="275" name="federal_tax">
+    <column id="301" parent="275" name="federal_tax">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(15,2 digit)|0s</StoredType>
+      <StateNumber>963</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="303" parent="275" name="provincial_tax">
+    <column id="302" parent="275" name="provincial_tax">
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(15,2 digit)|0s</StoredType>
+      <StateNumber>966</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="304" parent="275" name="net_income">
+    <column id="303" parent="275" name="net_income">
       <NotNull>1</NotNull>
       <Position>7</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>numeric(15,2 digit)|0s</StoredType>
+      <StateNumber>965</StateNumber>
+      <StoredType>numeric(38,2 digit)|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="305" parent="275" name="calculation_date">
+    <column id="304" parent="275" name="calculation_date">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>8</Position>
       <StateNumber>946</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="306" parent="275" name="saved">
+    <column id="305" parent="275" name="saved">
       <DefaultExpression>false</DefaultExpression>
       <Position>9</Position>
       <StateNumber>946</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <column id="307" parent="275" name="deleted">
+    <column id="306" parent="275" name="deleted">
       <DefaultExpression>false</DefaultExpression>
       <Position>10</Position>
       <StateNumber>946</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <foreign-key id="308" parent="275" name="tax_calculations_user_id_fkey">
+    <foreign-key id="307" parent="275" name="tax_calculations_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25136</ObjectId>
+      <ObjectId>25255</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>946</StateNumber>
+      <StateNumber>971</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>25102</RefTableId>
     </foreign-key>
-    <index id="309" parent="275" name="tax_calculations_pkey">
+    <index id="308" parent="275" name="tax_calculations_pkey">
       <ColNames>calculation_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25134</ObjectId>
+      <ObjectId>25204</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
+      <StateNumber>968</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="310" parent="275" name="idx_tax_calculations_user_id">
+    <index id="309" parent="275" name="idx_tax_calculations_user_id">
       <ColNames>user_id</ColNames>
-      <ObjectId>25141</ObjectId>
-      <StateNumber>946</StateNumber>
+      <ObjectId>25217</ObjectId>
+      <StateNumber>968</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="311" parent="275" name="tax_calculations_pkey">
+    <key id="310" parent="275" name="tax_calculations_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25135</ObjectId>
+      <ObjectId>25205</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25134</UnderlyingIndexId>
+      <StateNumber>962</StateNumber>
+      <UnderlyingIndexId>25204</UnderlyingIndexId>
     </key>
-    <column id="312" parent="276" name="history_id">
+    <column id="311" parent="276" name="history_id">
       <DefaultExpression>nextval(&apos;tax_history_history_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
+      <StateNumber>969</StateNumber>
+      <StoredType>bigint|0s</StoredType>
       <SequenceId>25142</SequenceId>
-      <TypeId>23</TypeId>
+      <TypeId>20</TypeId>
     </column>
-    <column id="313" parent="276" name="calculation_id">
+    <column id="312" parent="276" name="calculation_id">
       <Position>2</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
+      <StateNumber>970</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
     </column>
-    <column id="314" parent="276" name="saved_at">
+    <column id="313" parent="276" name="saved_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StateNumber>946</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="315" parent="276" name="tax_history_calculation_id_fkey">
+    <foreign-key id="314" parent="276" name="tax_history_calculation_id_fkey">
       <ColNames>calculation_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25150</ObjectId>
+      <ObjectId>25237</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>946</StateNumber>
+      <StateNumber>970</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>25126</RefTableId>
     </foreign-key>
-    <index id="316" parent="276" name="tax_history_pkey">
+    <index id="315" parent="276" name="tax_history_pkey">
       <ColNames>history_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25148</ObjectId>
+      <ObjectId>25229</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
+      <StateNumber>970</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="317" parent="276" name="idx_tax_history_calculation_id">
+    <index id="316" parent="276" name="idx_tax_history_calculation_id">
       <ColNames>calculation_id</ColNames>
-      <ObjectId>25155</ObjectId>
-      <StateNumber>946</StateNumber>
+      <ObjectId>25236</ObjectId>
+      <StateNumber>970</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="318" parent="276" name="tax_history_pkey">
+    <key id="317" parent="276" name="tax_history_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25149</ObjectId>
+      <ObjectId>25230</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25148</UnderlyingIndexId>
+      <StateNumber>969</StateNumber>
+      <UnderlyingIndexId>25229</UnderlyingIndexId>
     </key>
-    <check id="319" parent="277" name="users_password_hash_check">
+    <check id="318" parent="277" name="users_password_hash_check">
       <ColNames>password_hash</ColNames>
       <ObjectId>25107</ObjectId>
       <Predicate>length((password_hash)::text) &gt;= 8</Predicate>
       <StateNumber>946</StateNumber>
     </check>
-    <column id="320" parent="277" name="user_id">
+    <column id="319" parent="277" name="user_id">
       <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>integer|0s</StoredType>
+      <StateNumber>971</StateNumber>
+      <StoredType>bigint|0s</StoredType>
       <SequenceId>25101</SequenceId>
-      <TypeId>23</TypeId>
+      <TypeId>20</TypeId>
     </column>
-    <column id="321" parent="277" name="username">
+    <column id="320" parent="277" name="username">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
+      <StateNumber>973</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="322" parent="277" name="email">
+    <column id="321" parent="277" name="email">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>946</StateNumber>
-      <StoredType>varchar(100)|0s</StoredType>
+      <StateNumber>972</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="323" parent="277" name="password_hash">
+    <column id="322" parent="277" name="password_hash">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>946</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="324" parent="277" name="created_at">
+    <column id="323" parent="277" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>5</Position>
       <StateNumber>946</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <index id="325" parent="277" name="users_pkey">
+    <index id="324" parent="277" name="users_pkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25108</ObjectId>
+      <ObjectId>25248</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
+      <StateNumber>971</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="326" parent="277" name="users_username_key">
+    <index id="325" parent="277" name="users_username_key">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25110</ObjectId>
-      <StateNumber>946</StateNumber>
+      <ObjectId>25273</ObjectId>
+      <StateNumber>973</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="327" parent="277" name="users_email_key">
+    <index id="326" parent="277" name="users_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25112</ObjectId>
-      <StateNumber>946</StateNumber>
+      <ObjectId>25268</ObjectId>
+      <StateNumber>972</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="328" parent="277" name="idx_users_username">
+    <index id="327" parent="277" name="idx_users_username">
       <ColNames>username</ColNames>
-      <ObjectId>25115</ObjectId>
-      <StateNumber>946</StateNumber>
+      <ObjectId>25275</ObjectId>
+      <StateNumber>973</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="329" parent="277" name="idx_users_email">
+    <index id="328" parent="277" name="idx_users_email">
       <ColNames>email</ColNames>
-      <ObjectId>25114</ObjectId>
-      <StateNumber>946</StateNumber>
+      <ObjectId>25270</ObjectId>
+      <StateNumber>972</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="330" parent="277" name="users_pkey">
+    <key id="329" parent="277" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25109</ObjectId>
+      <ObjectId>25249</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25108</UnderlyingIndexId>
+      <StateNumber>971</StateNumber>
+      <UnderlyingIndexId>25248</UnderlyingIndexId>
     </key>
-    <key id="331" parent="277" name="users_username_key">
+    <key id="330" parent="277" name="users_username_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25111</ObjectId>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25110</UnderlyingIndexId>
+      <ObjectId>25274</ObjectId>
+      <StateNumber>973</StateNumber>
+      <UnderlyingIndexId>25273</UnderlyingIndexId>
     </key>
-    <key id="332" parent="277" name="users_email_key">
+    <key id="331" parent="277" name="users_email_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>25113</ObjectId>
-      <StateNumber>946</StateNumber>
-      <UnderlyingIndexId>25112</UnderlyingIndexId>
+      <ObjectId>25269</ObjectId>
+      <StateNumber>972</StateNumber>
+      <UnderlyingIndexId>25268</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

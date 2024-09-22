@@ -5,29 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de0e940d-9b20-46e8-ba14-303efc4f4890" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/BPAController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/BasicPersonalAmount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/repositories/BasicPersonalAmountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/BPAService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ideaDataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.ideaDataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.iws" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxCalculationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxCalculationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/controllers/TaxHistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/TaxCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/TaxCalculation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/repositories/TaxCalculationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/repositories/TaxCalculationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/repositories/TaxHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/repositories/TaxHistoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699/storage_v2/_src_/database/tax_db.kg2Byw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/dataSources/494c258b-4a6c-4c24-8a81-acf5f9d99699/storage_v2/_src_/database/tax_db.kg2Byw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxHistoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/calculate-tax.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/calculate-tax.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/tax-history.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/tax-history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxHistoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxHistoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/models/TaxCalculation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/models/TaxCalculation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/repositories/TaxCalculationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/repositories/TaxCalculationRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/repositories/TaxHistoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/repositories/TaxHistoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/security/SecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxHistoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxHistoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/calculate-tax.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/calculate-tax.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/tax-history.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/tax-history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +217,13 @@
     <option name="ADD_LABEL_ON_UNIT_TEST_PASSED" value="true" />
     <option name="ADD_LABEL_ON_UNIT_TEST_FAILED" value="true" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="PerforceConfiguration">
     <option name="PORT" value="magic:1666" />
     <option name="USER" value="" />
@@ -278,6 +277,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.TaxCalculatorApp.executor": "Run",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Emily/PROJECTS/taxapp/TAX CALCULATOR APP(token-based)",
     "node.js.detected.package.eslint": "true",
@@ -285,6 +285,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -293,7 +297,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.TaxCalculatorApp">
+  <component name="RunManager" selected="JUnit.TestCalculationServiceTest">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -406,7 +410,10 @@
       <workItem from="1726704881870" duration="17000" />
       <workItem from="1726937020893" duration="3909000" />
       <workItem from="1726943445588" duration="136000" />
-      <workItem from="1726946901188" duration="17833000" />
+      <workItem from="1726946901188" duration="17988000" />
+      <workItem from="1726980381355" duration="140000" />
+      <workItem from="1726980557259" duration="97000" />
+      <workItem from="1726980673687" duration="5204000" />
     </task>
     <servers />
   </component>
@@ -447,6 +454,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VssConfiguration">
     <CheckoutOptions>
