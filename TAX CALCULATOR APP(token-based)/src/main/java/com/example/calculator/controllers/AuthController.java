@@ -25,7 +25,7 @@ public class AuthController {
 
     private final JwtUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
-    private final UserService userService;  // Assuming you have a service to fetch user details
+    private final UserService userService;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, JwtUtils jwtUtils, UserService userService) {

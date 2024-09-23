@@ -65,8 +65,8 @@ public class TaxCalculationService {
         taxCalculation.setNetIncome(netIncome);
         taxCalculation.setUser(user);
         taxCalculation.setCalculationDate(LocalDateTime.now());
-        taxCalculation.setSaved(false);  // Whether to save the calculation to tax history
-        taxCalculation.setDeleted(false);  // Ensure it's not marked as deleted
+        taxCalculation.setSaved(false); // Set false unless user selects to save it after it's calculated
+        taxCalculation.setDeleted(false);
 
         return taxCalculationRepository.save(taxCalculation);
     }

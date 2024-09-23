@@ -56,11 +56,6 @@ public class UserService {
         return Optional.ofNullable(userRepository.findByEmail(email));
     }
 
-    // Find user by ID
-    public Optional<User> findById(Long userId) {
-        return userRepository.findById(userId);
-    }
-
     // Find user by ID or throw exception if not found
     public User findByIdOrThrow(Long userId) {
         return userRepository.findById(userId)
@@ -91,8 +86,6 @@ public class UserService {
             throw new ResourceNotFoundException("User not found");
         }
     }
-
-
 
     // Delete a user account
     public void deleteUser(Long userId) {

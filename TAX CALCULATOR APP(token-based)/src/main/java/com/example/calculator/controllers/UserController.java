@@ -108,26 +108,6 @@ public class UserController {
         }
     }
 
-    // Update user information
-//    @PutMapping("/{userId}")
-//    public ResponseEntity<?> updateUser(@PathVariable Long userId, @Valid @RequestBody UserDTO updatedUserDTO, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return ResponseEntity.badRequest().body(result.getFieldErrors().stream()
-//                    .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
-//                    .toList());
-//        }
-//
-//        try {
-//            User existingUser = userService.findByIdOrThrow(userId);
-//            existingUser.setUsername(updatedUserDTO.getUsername());
-//            existingUser.setEmail(updatedUserDTO.getEmail());
-//            userService.updateUser(existingUser);
-//
-//            return ResponseEntity.ok(existingUser);
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update failed: " + e.getMessage());
-//        }
-//    }
 
     // Delete user
     @DeleteMapping("/{userId}")

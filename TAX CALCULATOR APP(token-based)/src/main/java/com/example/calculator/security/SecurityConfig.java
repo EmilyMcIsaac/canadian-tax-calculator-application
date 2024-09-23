@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -35,7 +34,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-//                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))  // Disable CSRF for API paths
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/homepage.html", "/login.html", "/register.html", "/index.html").permitAll()
@@ -43,18 +41,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/tax-calculations/calculate").permitAll()
                         .requestMatchers("/account.html", "/calculate-tax.html", "/tax-history.html", "logout.html", "/account", "/calculate-tax", "/tax-history").permitAll()
                         .anyRequest().authenticated())
-
-//                // Add Logout Configuration Here
-//                .logout(logout -> logout
-//                        .logoutUrl("/logout")
-//                        .logoutSuccessUrl("/login.html")  // Redirect to login page after logout
-//                        .deleteCookies("JSESSIONID")  // Optionally delete the session cookie
-//                        .invalidateHttpSession(true)  // Invalidate session if used
-//                        .permitAll())  // Allow everyone to access the logout endpoint
-
-                // Use addFilterBefore to insert JwtAuthenticationFilter before UsernamePasswordAuthenticationFilter
                 .addFilterBefore(new JwtAuthenticationFilter(authenticationManager, jwtUtils, userService), UsernamePasswordAuthenticationFilter.class)
-                // Use addFilterBefore for JwtAuthorizationFilter as well
                 .addFilterBefore(new JwtAuthorizationFilter(authenticationManager, customUserDetailsService, jwtUtils), UsernamePasswordAuthenticationFilter.class);
 
 

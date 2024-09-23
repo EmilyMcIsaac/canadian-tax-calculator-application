@@ -33,8 +33,7 @@ public class TaxCalculationController {
         int taxYear = request.getTaxYear(); // Add the taxYear
 
         // Fetch the user from the UserService
-        User user = userService.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = userService.findByIdOrThrow(userId);
 
         // Calculate the tax with the tax year
         TaxCalculation calculation = taxCalculationService.createTaxCalculation(income, province, taxYear, user);
@@ -52,8 +51,7 @@ public class TaxCalculationController {
     // Get all tax calculations for the current user
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<TaxCalculation>> getAllTaxCalculationsForUser(@PathVariable Long userId) {
-        User user = userService.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = userService.findByIdOrThrow(userId);
 
         List<TaxCalculation> calculations = taxCalculationService.getAllForUser(user);
         return ResponseEntity.ok(calculations);

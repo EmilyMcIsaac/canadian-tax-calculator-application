@@ -43,7 +43,6 @@ public class TaxCalculation {
     @Column(nullable = false)
     private Boolean deleted;
 
-    // New taxYear field
     @Column(name = "tax_year", nullable = false)
     private int taxYear;
 
@@ -51,7 +50,6 @@ public class TaxCalculation {
     @OneToMany(mappedBy = "taxCalculation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaxHistory> taxHistories;
 
-    // Constructor
     public TaxCalculation(User user, BigDecimal income, String region, int taxYear, BigDecimal provincialTax,
                           BigDecimal federalTax, BigDecimal netIncome, LocalDateTime calculationDate, boolean saved) {
         this.user = user;

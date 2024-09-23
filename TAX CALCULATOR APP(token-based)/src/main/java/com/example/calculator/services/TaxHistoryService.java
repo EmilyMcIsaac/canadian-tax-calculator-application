@@ -47,7 +47,6 @@ public class TaxHistoryService {
         TaxHistory taxHistory = taxHistoryRepository.findById(historyId)
                 .orElseThrow(() -> new ResourceNotFoundException("Tax history not found"));
 
-        // Soft delete the tax calculation associated with this history entry
         TaxCalculation taxCalculation = taxHistory.getTaxCalculation();
         taxCalculation.setDeleted(true);
         taxCalculationRepository.save(taxCalculation);

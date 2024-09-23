@@ -15,10 +15,9 @@ import java.util.Map;
 @RequestMapping("/api/tax-history")
 public class TaxHistoryController {
 
-    private final UserService userService;  // Declare the userService
+    private final UserService userService;
     private final TaxHistoryService taxHistoryService;
 
-    // Constructor-based dependency injection
     @Autowired
     public TaxHistoryController(UserService userService, TaxHistoryService taxHistoryService) {
         this.userService = userService;
@@ -41,8 +40,7 @@ public class TaxHistoryController {
     // Get all tax history entries for a user
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<TaxHistory>> getTaxHistoryForUser(@PathVariable Long userId) {
-        User user = userService.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = userService.findByIdOrThrow(userId);
 
         List<TaxHistory> history = taxHistoryService.getUserTaxHistory(user);
         return ResponseEntity.ok(history);
