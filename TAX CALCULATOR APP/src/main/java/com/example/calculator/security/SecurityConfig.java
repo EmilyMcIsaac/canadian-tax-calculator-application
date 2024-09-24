@@ -21,13 +21,13 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
     private final JwtUtils jwtUtils;
-    private final UserService userService;  // Add UserService here
+    private final UserService userService;
 
     // Constructor injection for UserService
     public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtUtils jwtUtils, UserService userService) {
         this.customUserDetailsService = customUserDetailsService;
         this.jwtUtils = jwtUtils;
-        this.userService = userService;  // Inject the UserService here
+        this.userService = userService;
     }
 
     @Bean
