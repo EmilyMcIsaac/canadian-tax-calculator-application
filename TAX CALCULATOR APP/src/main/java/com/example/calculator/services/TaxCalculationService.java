@@ -65,7 +65,7 @@ public class TaxCalculationService {
         taxCalculation.setNetIncome(netIncome);
         taxCalculation.setUser(user);
         taxCalculation.setCalculationDate(LocalDateTime.now());
-        taxCalculation.setSaved(false); // Set false unless user selects to save it after it's calculated
+        taxCalculation.setSaved(false); // Set false by default, will change to true if user selects to save it after it's calculated
         taxCalculation.setDeleted(false);
 
         return taxCalculationRepository.save(taxCalculation);
@@ -77,7 +77,7 @@ public class TaxCalculationService {
 
         for (TaxBracket bracket : taxBrackets) {
             System.out.println("Calculating tax for bracket: " + bracket);
-            System.out.println("Income: " + income + ", Min: " + bracket.getMaxIncome() + ", Max: " + bracket.getMinIncome() + ", Rate: " + bracket.getTaxRate());
+            System.out.println("Income: " + income + ", Max: " + bracket.getMaxIncome() + ", Min: " + bracket.getMinIncome() + ", Rate: " + bracket.getTaxRate());
 
             BigDecimal minIncome = bracket.getMinIncome();
             BigDecimal maxIncome = bracket.getMaxIncome().compareTo(new BigDecimal("999999999.99")) == 0

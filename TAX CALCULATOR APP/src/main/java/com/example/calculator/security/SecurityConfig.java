@@ -23,7 +23,6 @@ public class SecurityConfig {
     private final JwtUtils jwtUtils;
     private final UserService userService;
 
-    // Constructor injection for UserService
     public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtUtils jwtUtils, UserService userService) {
         this.customUserDetailsService = customUserDetailsService;
         this.jwtUtils = jwtUtils;
