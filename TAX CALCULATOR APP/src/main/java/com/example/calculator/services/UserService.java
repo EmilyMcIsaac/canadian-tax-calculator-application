@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,7 @@ public class UserService {
         newUser.setUsername(userDTO.getUsername());
         newUser.setEmail(userDTO.getEmail());
         newUser.setPasswordHash(passwordEncoder.encode(userDTO.getPassword())); // Encode the password
+        newUser.setCreatedAt(LocalDateTime.now());
 
         // Save the user in the repository and return the persisted user
         return userRepository.save(newUser);

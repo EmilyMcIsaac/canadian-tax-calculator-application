@@ -3,6 +3,8 @@ package com.example.calculator.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+import java.time.LocalDateTime;
+
 public class UserDTO {
 
     @NotBlank(message = "Username is required")
@@ -17,6 +19,8 @@ public class UserDTO {
     // These fields are for password updates
     private String oldPassword;
     private String newPassword;
+
+    private LocalDateTime createdAt;
 
     public UserDTO(String username, String email) {
         this.username = username;
@@ -68,4 +72,9 @@ public class UserDTO {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {}
 }

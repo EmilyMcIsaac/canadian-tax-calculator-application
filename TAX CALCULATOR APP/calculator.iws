@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de0e940d-9b20-46e8-ba14-303efc4f4890" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/TaxCalculationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator.iws" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxCalculationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxHistoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/TaxHistoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/models/TaxCalculation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/models/TaxCalculation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/repositories/TaxHistoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/repositories/TaxHistoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxCalculationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxHistoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/TaxHistoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/calculator/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/calculator/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -407,6 +422,8 @@
       <workItem from="1727127951144" duration="3606000" />
       <workItem from="1727137072190" duration="62000" />
       <workItem from="1727208067409" duration="233000" />
+      <workItem from="1727819970646" duration="1502000" />
+      <workItem from="1729875235886" duration="1391000" />
     </task>
     <servers />
   </component>

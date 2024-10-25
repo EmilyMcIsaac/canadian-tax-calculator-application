@@ -33,7 +33,7 @@ public class User {
     public User(String username, String email, String passwordHash) {
         this.username = username;
         this.email = email;
-        this.passwordHash = passwordHash;  // Ensure this is encoded before calling!
+        this.passwordHash = passwordHash;
         this.createdAt = LocalDateTime.now();
     }
 
